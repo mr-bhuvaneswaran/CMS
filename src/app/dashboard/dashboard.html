@@ -1,0 +1,54 @@
+<div ng-controller="dashBoardCtrl" layout="column" style="height:500px;" ng-cloak>
+
+  <section layout="row" flex>
+
+    <md-sidenav
+        layout="column"
+        ng-if="show"
+        class="md-sidenav-left"  
+        md-component-id="left"
+        md-is-locked-open="$mdMedia('gt-sm')"
+        md-whiteframe="4"
+        style="height:100vh;width: 16%;">
+
+      <md-toolbar class="md-theme-indigo" layout="row">
+        <h1 class="md-toolbar-tools">Quick Links</h1>
+        <md-icon class="link" ng-click="close()" hide-gt-sm style="margin: 16px;height: 30px;width: 30px;" md-svg-icon="/assets/images/icons/close.svg"></md-icon>
+      </md-toolbar>
+      <div layout-padding style="background: rgba(224, 224, 224, 0.7);">
+         <img src="/assets/images/bhuvanes.jpg" style="border-radius:50%;height: 48px;width: 48px;" alt="image">
+        <div><strong style="font-size: smaller;">Hello,{{username}}</strong></div>  
+      </div>
+        
+      <md-content class="auto-scroll" layout-padding style="background: rgba(224, 224, 224, 0.7);padding:0px;height: 100%;">
+      <md-list  layout="column" style="padding:0px">
+         
+         <md-list-item class="link" ng-click="changeView(link)" ng-init="icon=['icon-dashboard','icon-user','icon-calendar','icon-bell',
+         'icon-bar-chart','icon-inr','icon-edit','icon-align-justify','icon-bookmark',
+         'icon-list-alt','icon-envelope-alt','icon-book']" ng-repeat="link in links">
+               <i ng-class="icon[$index]"></i>
+               <span style="font-size:15px;padding-left: 8px;">{{link}}</span> 
+         </md-list-item>  
+      </md-list> 
+      </md-content>
+    </md-sidenav>
+
+    <md-content flex layout-padding style="padding: 0px;height: 100vh;">
+      <md-toolbar class="md-theme-indigo" layout="row" style="padding:0px;" md-highlight="false" >
+            <md-icon class="link" ng-click="toggleLeft()" hide-gt-sm style="margin: 16px;height: 30px;width: 30px;" md-svg-icon="/assets/images/icons/menu.svg"></md-icon>
+            <md-icon id="menu" class="link" ng-click="toggle()"  style="margin: 16px;height: 30px;width: 30px;" md-svg-icon="/assets/images/icons/menu.svg"></md-icon>
+        </md-toolbar>
+
+      <div layout="column" layout-align="top center" style="padding: 0px;">
+          <md-card style="width: 100%;margin: 0px;">
+          <md-card-content style="padding:15px">
+               <span style="padding-left: 20px;font-size: 24px;">{{selected}}</span>
+          </md-card-content>
+          </md-card>     
+
+      </div>
+      <div flex></div>
+    </md-content>
+  </section>
+
+</div>
