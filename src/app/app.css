@@ -44,7 +44,9 @@ background: #3f51b5;
   cursor:pointer;
 }
 
-
+.link-background:hover{
+    background: rgb(67, 88, 202);
+}
 
 .auto-scroll{
         overflow: hidden;
