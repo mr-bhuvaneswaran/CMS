@@ -74494,6 +74494,7 @@ function dashBoardCtrl($scope,$mdToast, $mdSidenav,$timeout,$mdPanel){
     'Mark Detail','Fees Detail','Library Status',
     'Exam Results','Feedback','Events','Greetings','Circular']
 
+    
     $scope.selected="Dashboard"
     $scope.changeView=function(view){
       $scope.selected=view
@@ -74517,9 +74518,7 @@ function dashBoardCtrl($scope,$mdToast, $mdSidenav,$timeout,$mdPanel){
         '  </div>' +
         '</div>';
 
-    $scope.closeMenu = function() {
-      mdPanelRef && mdPanelRef.close();
-    }    
+    
 
     $scope.settings = {
       name: 'settings',
@@ -74534,7 +74533,7 @@ function dashBoardCtrl($scope,$mdToast, $mdSidenav,$timeout,$mdPanel){
       var template = $scope.menuTemplate;
 
       var position = $mdPanel.newPanelPosition()
-          .relativeTo($event.srcElement)
+          .relativeTo("#profile")
           .addPanelPosition(
             $mdPanel.xPosition.ALIGN_END,
             $mdPanel.yPosition.BELOW
@@ -74584,9 +74583,9 @@ function dashBoardCtrl($scope,$mdToast, $mdSidenav,$timeout,$mdPanel){
       }, 200);
     }
 
-    $scope.close = function () {
-      $mdSidenav('left').close()
-        };
+    $scope.closeMenu = function() {
+      mdPanelRef && mdPanelRef.close();
+    }
 
 }
 module.exports = dashBoardCtrl;
