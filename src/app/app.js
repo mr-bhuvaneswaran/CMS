@@ -2,11 +2,11 @@
 
 var moment = require('moment');
 require('./login/login-module.js');
-require('./dashboard/dashboard-module.js');
+require('./main-page/main-page-module.js');
 
 var myApp = angular.module('myApp', [
   'ngRoute',
-  'myApp.dashboard',
+  'myApp.mainPage',
   'myApp.login',
 ]);
 
@@ -20,9 +20,9 @@ myApp.config(['$locationProvider', '$routeProvider', function($locationProvider,
     templateUrl: 'app/login/login.html',
     controller: 'loginCtrl'
   })
-  .when('/dashboard',{
-    templateUrl:'/app/dashboard/dashboard.html',
-    controller:'dashBoardCtrl'
+  .when('/mainpage',{
+    templateUrl:'/app/main-page/main-page.html',
+    controller:'mainPageCtrl'
   })
   .otherwise({
     redirectTo: '/'

@@ -74455,11 +74455,11 @@ return hooks;
 
 var moment = require('moment');
 require('./login/login-module.js');
-require('./dashboard/dashboard-module.js');
+require('./main-page/main-page-module.js');
 
 var myApp = angular.module('myApp', [
   'ngRoute',
-  'myApp.dashboard',
+  'myApp.mainPage',
   'myApp.login',
 ]);
 
@@ -74473,19 +74473,57 @@ myApp.config(['$locationProvider', '$routeProvider', function($locationProvider,
     templateUrl: 'app/login/login.html',
     controller: 'loginCtrl'
   })
-  .when('/dashboard',{
-    templateUrl:'/app/dashboard/dashboard.html',
-    controller:'dashBoardCtrl'
+  .when('/mainpage',{
+    templateUrl:'/app/main-page/main-page.html',
+    controller:'mainPageCtrl'
   })
   .otherwise({
     redirectTo: '/'
   });
 }]);
 
-},{"./dashboard/dashboard-module.js":12,"./login/login-module.js":14,"moment":9}],11:[function(require,module,exports){
+},{"./login/login-module.js":12,"./main-page/main-page-module.js":14,"moment":9}],11:[function(require,module,exports){
 'use strict';
 
-function dashBoardCtrl($scope,$mdToast, $mdSidenav,$timeout,$mdPanel){
+function loginCtrl($scope,$mdToast,$location){
+    $scope.remember_login = false;
+    $scope.username="";
+    $scope.password="";
+
+    $scope.sign_in = function(){
+        if ($scope.username=="15" && $scope.password=="15"){
+            $mdToast.show(
+                $mdToast.simple()
+                .textContent('Please Wait!')
+                .position("bottom")
+                .hideDelay(3000)
+            );
+            $location.path('/mainpage');
+        }
+        else{
+            $mdToast.show(
+                $mdToast.simple()
+                .textContent('Invalid Credentials!')
+                .position("bottom")
+                .hideDelay(3000)
+            );
+         };
+
+        }
+    } 
+
+module.exports = loginCtrl;
+},{}],12:[function(require,module,exports){
+"use strict";
+
+require('angular-material');
+var loginCtrl = require('./login-controller.js');
+var loginModule = angular.module('myApp.login',['ngRoute','ngMaterial']);
+loginModule.controller('loginCtrl',loginCtrl);
+},{"./login-controller.js":11,"angular-material":6}],13:[function(require,module,exports){
+'use strict';
+
+function mainPageCtrl($scope,$mdToast, $mdSidenav,$timeout,$mdPanel){
 
     $scope.username="BHUVANESWARAN B"
     $scope.show=true
@@ -74499,65 +74537,6 @@ function dashBoardCtrl($scope,$mdToast, $mdSidenav,$timeout,$mdPanel){
     $scope.changeView=function(view){
       $scope.selected=view
     }
-
-
-    $scope.menuTemplate = '' +
-        '<div class="menu-panel" style="background: rgba(224, 224, 224, 0.7);color:black;" md-whiteframe="4">' +
-        '  <div class="menu-content">' +
-        '    <div class="menu-item" ng-repeat="item in settings.items">' +
-        '      <button class="md-button">' +
-        '        <span>{{item}}</span>' +
-        '      </button>' +
-        '    </div>' + 
-        '    <md-divider></md-divider>' +
-        '    <div class="menu-item">' +
-        '      <button class="md-button" ng-click="closeMenu()">' +
-        '        <span>Close</span>' +
-        '      </button>' +
-        '    </div>' +
-        '  </div>' +
-        '</div>';
-
-    
-
-    $scope.settings = {
-      name: 'settings',
-      items: [
-        'Home',
-        'About',
-        'Contact'
-      ]
-    };
-
-    $scope.showToolbarMenu = function($event) {
-      var template = $scope.menuTemplate;
-
-      var position = $mdPanel.newPanelPosition()
-          .relativeTo("#profile")
-          .addPanelPosition(
-            $mdPanel.xPosition.ALIGN_END,
-            $mdPanel.yPosition.BELOW
-          );
-
-      var config = {
-        id: 'toolbar_' + 'settings',
-        attachTo: angular.element(document.body),
-        controller: dashBoardCtrl,
-        controllerAs: 'dashBoardCtrl',
-        template: template,
-        position: position,
-        panelClass: 'menu-panel-container',
-        locals: {
-          items: $scope.settings.items
-        },
-        openFrom: $event,
-        focusOnOpen: false,
-        zIndex: 100,
-        propagateContainerEvents: true,
-      };
-
-      $mdPanel.open(config);
-    };
 
     $scope.toggle=function(){
         $scope.show=!$scope.show
@@ -74582,55 +74561,14 @@ function dashBoardCtrl($scope,$mdToast, $mdSidenav,$timeout,$mdPanel){
           .toggle()
       }, 200);
     }
-
-    $scope.closeMenu = function() {
-      mdPanelRef && mdPanelRef.close();
-    }
-
+    
 }
-module.exports = dashBoardCtrl;
-},{}],12:[function(require,module,exports){
-"use strict";
-require('angular-material');
-var dashBoardCtrl = require('./dashboard-controller.js');
-var dashBoardModule = angular.module('myApp.dashboard',['ngRoute','ngMaterial']);
-dashBoardModule.controller('dashBoardCtrl',dashBoardCtrl);
-},{"./dashboard-controller.js":11,"angular-material":6}],13:[function(require,module,exports){
-'use strict';
-
-function loginCtrl($scope,$mdToast,$location){
-    $scope.remember_login = false;
-    $scope.username="";
-    $scope.password="";
-
-    $scope.sign_in = function(){
-        if ($scope.username=="15" && $scope.password=="15"){
-            $mdToast.show(
-                $mdToast.simple()
-                .textContent('Please Wait!')
-                .position("bottom")
-                .hideDelay(3000)
-            );
-            $location.path('/dashboard');
-        }
-        else{
-            $mdToast.show(
-                $mdToast.simple()
-                .textContent('Invalid Credentials!')
-                .position("bottom")
-                .hideDelay(3000)
-            );
-         };
-
-        }
-    } 
-
-module.exports = loginCtrl;
+module.exports = mainPageCtrl;
 },{}],14:[function(require,module,exports){
 "use strict";
-
 require('angular-material');
-var loginCtrl = require('./login-controller.js');
-var loginModule = angular.module('myApp.login',['ngRoute','ngMaterial']);
-loginModule.controller('loginCtrl',loginCtrl);
-},{"./login-controller.js":13,"angular-material":6}]},{},[10]);
+var mainPageCtrl = require('./main-page-controller.js');
+var dashBoardModule = angular.module('myApp.mainPage',['ngRoute','ngMaterial']);
+dashBoardModule.controller('mainPageCtrl',mainPageCtrl);
+
+},{"./main-page-controller.js":13,"angular-material":6}]},{},[10]);

@@ -13,7 +13,7 @@ function loginCtrl($scope,$mdToast,$location){
                 .position("bottom")
                 .hideDelay(3000)
             );
-            $location.path('/dashboard');
+            $location.path('/mainpage');
         }
         else{
             $mdToast.show(
