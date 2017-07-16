@@ -2,8 +2,16 @@
 
 function mainPageCtrl($scope,$mdToast, $mdSidenav,$timeout,$mdPanel){
 
+    $scope.showDirective=[true,false,false,false,false,false,false,false,false,false,false,false]
+    $scope.currentSelected = 0
+    $scope.changeView=function(view,clicked){
+      $scope.selected=view
+      $scope.showDirective[$scope.currentSelected]=false
+      $scope.showDirective[clicked]=true
+      $scope.currentSelected = clicked
+    } 
     $scope.username="BHUVANESWARAN B"
-    $scope.show=true
+    $scope.navshow=true
     $scope.links=['Dashboard','Profile',
     'Acadamic Planner','Attendance',
     'Mark Detail','Fees Detail','Library Status',
@@ -11,12 +19,8 @@ function mainPageCtrl($scope,$mdToast, $mdSidenav,$timeout,$mdPanel){
 
     
     $scope.selected="Dashboard"
-    $scope.changeView=function(view){
-      $scope.selected=view
-    }
-
     $scope.toggle=function(){
-        $scope.show=!$scope.show
+        $scope.navshow=!$scope.navshow
     }
     $scope.toggleLeft = buildDelayedToggler('left');
     function debounce(func, wait, context) {

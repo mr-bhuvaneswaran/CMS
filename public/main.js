@@ -74482,7 +74482,7 @@ myApp.config(['$locationProvider', '$routeProvider', function($locationProvider,
   });
 }]);
 
-},{"./login/login-module.js":12,"./main-page/main-page-module.js":14,"moment":9}],11:[function(require,module,exports){
+},{"./login/login-module.js":12,"./main-page/main-page-module.js":24,"moment":9}],11:[function(require,module,exports){
 'use strict';
 
 function loginCtrl($scope,$mdToast,$location){
@@ -74521,12 +74521,130 @@ var loginCtrl = require('./login-controller.js');
 var loginModule = angular.module('myApp.login',['ngRoute','ngMaterial']);
 loginModule.controller('loginCtrl',loginCtrl);
 },{"./login-controller.js":11,"angular-material":6}],13:[function(require,module,exports){
+function acadamicPlannerView(){
+    return {
+        restrict:'E',
+        templateUrl:'app/main-page/acadamic-planner/acadamic-planner.html',
+        controller:function(){
+
+        }
+    };
+}
+module.exports= acadamicPlannerView;
+},{}],14:[function(require,module,exports){
+function attendanceView(){
+    return {
+        restrict:'E',
+        templateUrl:'app/main-page/attendance/attendance.html',
+        controller:function(){
+
+        }
+    };
+}
+module.exports= attendanceView;
+},{}],15:[function(require,module,exports){
+function circularView(){
+    return {
+        restrict:'E',
+        templateUrl:'app/main-page/circular/circular.html',
+        controller:function(){
+
+        }
+    };
+}
+module.exports= circularView;
+},{}],16:[function(require,module,exports){
+function dashboardView(){
+    return {
+        restrict:'E',
+        templateUrl:'app/main-page/dashboard/dashboard.html',
+        controller:function(){
+
+        }
+    };
+}
+module.exports= dashboardView;
+},{}],17:[function(require,module,exports){
+function eventsView(){
+    return {
+        restrict:'E',
+        templateUrl:'app/main-page/events/events.html',
+        controller:function(){
+
+        }
+    };
+}
+module.exports= eventsView;
+},{}],18:[function(require,module,exports){
+function examResultsView(){
+    return {
+        restrict:'E',
+        templateUrl:'app/main-page/exam-results/exam-results.html',
+        controller:function(){
+
+        }
+    };
+}
+module.exports= examResultsView;
+},{}],19:[function(require,module,exports){
+function feedbackView(){
+    return {
+        restrict:'E',
+        templateUrl:'app/main-page/feedback/feedback.html',
+        controller:function(){
+
+        }
+    };
+}
+module.exports= feedbackView;
+},{}],20:[function(require,module,exports){
+function feesDetailsView(){
+    return {
+        restrict:'E',
+        templateUrl:'app/main-page/fees-details/fees-details.html',
+        controller:function(){
+
+        }
+    };
+}
+module.exports= feesDetailsView;
+},{}],21:[function(require,module,exports){
+function greetingsView(){
+    return {
+        restrict:'E',
+        templateUrl:'app/main-page/greetings/greetings.html',
+        controller:function(){
+
+        }
+    };
+}
+module.exports= greetingsView;
+},{}],22:[function(require,module,exports){
+function libraryStatusView(){
+    return {
+        restrict:'E',
+        templateUrl:'app/main-page/library-status/library-status.html',
+        controller:function(){
+
+        }
+    };
+}
+module.exports= libraryStatusView;
+},{}],23:[function(require,module,exports){
 'use strict';
 
 function mainPageCtrl($scope,$mdToast, $mdSidenav,$timeout,$mdPanel){
 
+    $scope.showDirective=[true,false,false,false,false,false,false,false,false,false,false,false]
+    $scope.currentSelected = 0
+    $scope.changeView=function(view,clicked){
+      $scope.selected=view
+      $scope.showDirective[$scope.currentSelected]=false
+      $scope.showDirective[clicked]=true
+      $scope.currentSelected = clicked
+    } 
     $scope.username="BHUVANESWARAN B"
-    $scope.show=true
+    $scope.navshow=true
     $scope.links=['Dashboard','Profile',
     'Acadamic Planner','Attendance',
     'Mark Detail','Fees Detail','Library Status',
@@ -74534,12 +74652,8 @@ function mainPageCtrl($scope,$mdToast, $mdSidenav,$timeout,$mdPanel){
 
     
     $scope.selected="Dashboard"
-    $scope.changeView=function(view){
-      $scope.selected=view
-    }
-
     $scope.toggle=function(){
-        $scope.show=!$scope.show
+        $scope.navshow=!$scope.navshow
     }
     $scope.toggleLeft = buildDelayedToggler('left');
     function debounce(func, wait, context) {
@@ -74564,11 +74678,121 @@ function mainPageCtrl($scope,$mdToast, $mdSidenav,$timeout,$mdPanel){
     
 }
 module.exports = mainPageCtrl;
-},{}],14:[function(require,module,exports){
+},{}],24:[function(require,module,exports){
 "use strict";
 require('angular-material');
-var mainPageCtrl = require('./main-page-controller.js');
-var dashBoardModule = angular.module('myApp.mainPage',['ngRoute','ngMaterial']);
-dashBoardModule.controller('mainPageCtrl',mainPageCtrl);
+var acadamicPlannerView = require('./acadamic-planner/acadamic-planner.js'); 
+var attendanceView = require('./attendance/attendance.js');
+var circularView = require('./circular/circular.js');
+var dashboardView = require('./dashboard/dashboard.js');
+var eventsView = require('./events/events.js');
+var examResultsView = require('./exam-results/exam-results.js');
+var feedbackView = require('./feedback/feedback.js');
+var feesDetailsView = require('./fees-details/fees-details.js');
+var greetingsView = require('./greetings/greetings.js');
+var libraryStatusView = require('./library-status/library-status.js');
+var markDetailView = require('./mark-details/mark-details.js');
+var profileView = require('./profile/profile.js');
 
-},{"./main-page-controller.js":13,"angular-material":6}]},{},[10]);
+var mainPageCtrl = require('./main-page-controller.js');
+var mainPageModule = angular.module('myApp.mainPage',['ngRoute','ngMaterial']);
+mainPageModule.controller('mainPageCtrl',mainPageCtrl);
+mainPageModule.directive('acadamicPlannerView',acadamicPlannerView);
+mainPageModule.directive('attendanceView',attendanceView);
+mainPageModule.directive('circularView',circularView);
+mainPageModule.directive('dashboardView',dashboardView);
+mainPageModule.directive('eventsView',eventsView);
+mainPageModule.directive('examResultsView',examResultsView);
+mainPageModule.directive('feedbackView',feedbackView);
+mainPageModule.directive('feesDetailsView',feesDetailsView);
+mainPageModule.directive('greetingsView',greetingsView);
+mainPageModule.directive('libraryStatusView',libraryStatusView);
+mainPageModule.directive('markDetailView',markDetailView);
+mainPageModule.directive('profileView',profileView);
+
+
+},{"./acadamic-planner/acadamic-planner.js":13,"./attendance/attendance.js":14,"./circular/circular.js":15,"./dashboard/dashboard.js":16,"./events/events.js":17,"./exam-results/exam-results.js":18,"./feedback/feedback.js":19,"./fees-details/fees-details.js":20,"./greetings/greetings.js":21,"./library-status/library-status.js":22,"./main-page-controller.js":23,"./mark-details/mark-details.js":25,"./profile/profile.js":26,"angular-material":6}],25:[function(require,module,exports){
+function markDetailView(){
+    return {
+        restrict:'E',
+        templateUrl:'app/main-page/mark-details/mark-details.html',
+        controller:function(){
+
+        }
+    };
+}
+module.exports= markDetailView;
+},{}],26:[function(require,module,exports){
+function profileView(){
+    return {
+        restrict : 'E',
+        scope : {
+
+        },
+        templateUrl : 'app/main-page/profile/profile.html',
+        controller:function($scope){
+            $scope.student = {
+                name:"BHUVANESWARAN B",
+                batch:"2015-2019",
+                department:"CSE",
+                rollNo:"15BCS2015",
+                dateOfBirth:"08/05/1998",
+                gender:"Male",
+                fatherName:"BASKARAN C",
+                motherName:"CHANDRA",
+                income:40000.00,
+                religion:"Hindu",
+                community:"Backward Community",
+                caste:"YADAVA",
+                nationality:"INDIAN",
+                motherTongue:"TAMIL",
+                placeOfBirth:"MADURAI",
+                financialCategory:"self",
+                admissionType:"Regular",
+                admissionCategory:"Government Quota",
+                primaryAddress:{
+                    addressLine1:"B,93 Housing Board",
+                    addressLine2:"West ayakudi",
+                    addressLine3:"Palani-624613"
+                },
+                secondaryAddress:{
+                    addressLine1:"B,93 Housing Board",
+                    addressLine2:"West ayakudi",
+                    addressLine3:"Palani-624613"
+                },
+                medicalInformation:{
+                    height:170,
+                    weight:58.00,
+                    bloodGroup:"O+",
+                    physicallyChallenged:"YES",
+                    eyeColour:"Brown",
+                    eyeSight:"Normal",
+                    identification:{
+                        mole:"On left hand wrist",
+                        scar:"On left leg ankle"
+                    }
+                },
+                educationalInformations:[{
+                    course:"10th",
+                    institute:"Swamy Matriculation Higher Secondary School",
+                    place:"Palani",
+                    percentage:94.00,
+                    yearOfPassedOut:2013,
+                },{
+                    course:"12th",
+                    institute:"Swamy Matriculation Higher Secondary School",
+                    place:"Palani",
+                    percentage:93.00,
+                    yearOfPassedOut:2015,
+                },],
+
+
+
+            }
+
+        }
+    }
+}
+
+module.exports = profileView;
+},{}]},{},[10]);

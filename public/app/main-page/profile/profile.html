@@ -1,0 +1,105 @@
+<md-card class="profile" ng-cloak>
+  <md-content>
+    <md-tabs md-dynamic-height md-border-bottom>
+      <md-tab label="General">
+        <md-content layout = "row" class="md-padding">
+          <div style="color:rgb(63, 81, 181);" layout = "column" flex=25>
+            <img style="height: 55vh" src="assets/images/bhuvanes.jpg">
+            <br>
+            <div>
+                <span>{{student.name}}</span>
+                <span>({{student.rollNo}})</span>
+          </div>
+          <div> 
+                <span>{{student.department}}</span>
+                <span>{{student.batch}}</span>
+          </div>
+          <div> 
+                <span>{{student.dateOfBirth}}</span>
+          </div>    
+          </div> 
+          <div class="md-padding"  layout="column" flex=75>
+              <div layout="row" class="list"><div flex=50><b>Register No: </b>{{student.rollNo}}</div><div><b>Gender: </b>{{student.gender}}</div></div>
+              <div layout="row" class="transparentlist"><div flex=50><b>Father's Name: </b>{{student.fatherName}}</div><div><b>Mother's Name: </b>{{student.motherName}}</div></div>          
+              <div layout="row" class="list"><div flex=50><b>Annual Income: </b>{{student.income}}</div><div><b>Religion: </b>{{student.religion}}</div></div>
+              <div layout="row" class="transparentlist"><div flex=50><b>Community: </b>{{student.community}}</div><div><b>Caste: </b>{{student.caste}}</div></div>
+              <div layout="row" class="list"><div flex=50><b>Nationality: </b>{{student.nationality}}</div><div><b>Mother Tongue: </b>{{student.motherTongue}}</div></div>
+              <div layout="row" class="transparentlist"><div flex=50><b>Date Of Birth: </b>{{student.dateOfBirth}}</div><div><b>Place Of Birth: </b>{{student.placeOfBirth}}</div></div>
+              <div layout="row" class="list"><div flex=50><b>Admission No: </b>{{student.admissionNo}}</div><div><b>Admission Date: </b>{{student.admissionDate}}</div></div>
+              <div layout="row" class="transparentlist"><div flex=50><b>Date Of Join: </b>{{student.dateOfJoin}}</div><div><b>Financial Category: </b>{{student.financialCategory}}</div></div>
+              <div layout="row" class="list"><div flex=50><b>Admission Type: </b>{{student.admissionType}}</div><div><b>Admission Category: </b>{{student.admissionCategory}}</div></div>
+          </div>              
+        </md-content>
+      </md-tab>
+      <md-tab label="Address">
+        <md-content layout="column" class="md-padding">
+          <md-card style="background: rgb(238, 238, 238);border-top: solid 3px rgba(0, 0, 0, 0.48);" class="md-padding">
+                <h4>Primary Address:</h4>
+                <p><b>{{student.primaryAddress.addressLine1}}</b></p>
+                <p>{{student.primaryAddress.addressLine2}}</p>
+                <p>{{student.primaryAddress.addressLine3}}</p>
+          </md-card>
+          <md-card style="background: rgb(238, 238, 238);border-top: solid 3px rgba(0, 0, 0, 0.48);" class="md-padding">
+                <h4>Secondary Address:</h4>
+                <p><b>{{student.primaryAddress.addressLine1}}</b></p>
+                <p>{{student.primaryAddress.addressLine2}}</p>
+                <p>{{student.primaryAddress.addressLine3}}</p>    
+          </md-card>    
+        </md-content>
+      </md-tab>
+      <md-tab label="Medical Information">
+        <md-content class="md-padding">
+          <md-card style="background: rgb(238, 238, 238);border-top: solid 3px rgba(0, 0, 0, 0.48);" class="md-padding">
+            <h4>Medical Information</h4>
+              <div layout="row" style="padding:10px 10px"><div flex=50><b>Height: </b>{{student.medicalInformation.height}} Cm</div><div><b>Weight: </b>{{student.medicalInformation.weight}} Kg</div></div>
+              <div layout="row" style="padding:10px 10px"><div flex=50><b>Eye Colour: </b>{{student.medicalInformation.eyeColour}}</div><div><b>Eye Sight: </b>{{student.medicalInformation.eyeSight}}</div></div>          
+              <div layout="row" style="padding:10px 10px"><div flex=50><b>Blood Group: </b>{{student.medicalInformation.bloodGroup}}</div><div><b>Physically Challenged: </b>{{student.medicalInformation.physicallyChallenged}}</div></div>
+          </md-card>
+          <md-card style="background: rgb(238, 238, 238);border-top: solid 3px rgba(0, 0, 0, 0.48);" class="md-padding">
+            <h4>Identification Information</h4>
+              <div layout="row" style="padding:10px 10px"><div flex=50><b>Mole: </b>{{student.medicalInformation.identification.mole}}</div><div><b>Scar: </b>{{student.medicalInformation.identification.scar}}</div></div>     
+          </md-card>        
+        </md-content>
+      </md-tab>
+      <md-tab label="Educational Information">
+        <md-content class="md-padding">
+            <md-card layout="column" ng-repeat="educationalInformation in student.educationalInformations" style="background: rgb(238, 238, 238);border-top: solid 3px rgba(0, 0, 0, 0.48);" class="md-padding">
+                <div><b>Course: </b>{{educationalInformation.course}}</div>
+                <div><b>Year Of Passed Out: </b>{{educationalInformation.yearOfPassedOut}}</div>
+                <div><b>Percentage: </b>{{educationalInformation.percentage}}%</div>
+                <div><b>Institute: </b>{{educationalInformation.institute}}</div>
+                <div><b>Place: </b>{{educationalInformation.place}}</div>            
+            </md-card>    
+        </md-content>
+      </md-tab>
+    </md-tabs>
+  </md-content>
+</md-card>
+<style>
+.profile md-tabs.md-default-theme md-ink-bar, md-tabs md-ink-bar {
+    color: rgb(63, 81, 181);
+    background-color:rgb(63, 81, 181);
+}
+.profile .tabsdemoDynamicHeight md-content {
+  background-color: transparent !important; }
+.profile .tabsdemoDynamicHeight md-content md-tabs {
+    background: #f6f6f6;
+    border: 1px solid #e1e1e1; }
+.profile .tabsdemoDynamicHeight md-content md-tabs md-tabs-wrapper {
+      background: white; }
+.profile .tabsdemoDynamicHeight md-content h1:first-child {
+    margin-top: 0; }
+.profile .list{
+    background: rgba(0, 0, 0, 0.06);;
+    border-top: solid 1px rgba(0, 0, 0, 0.28);;
+    padding: 10px 10px;
+}    
+
+.profile .transparentlist{
+    background: white;
+    border-top: solid 1px rgba(0, 0, 0, 0.28);;    
+    padding: 10px 10px;
+}
+
+</style>
+
