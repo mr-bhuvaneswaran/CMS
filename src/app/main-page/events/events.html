@@ -1,1 +1,33 @@
-<p>events</p>
+<md-card layout="column" style="background: rgb(238, 238, 238);border-top: solid 3px rgba(0, 0, 0, 0.48);" class="md-padding">
+<div layout="row">
+    <div flex=5><b>S.No</b></div>
+    <div flex=30><b>Event Name</b></div>
+    <div flex=30><b>Venue</b></div>
+    <div flex=15><b>Incharge Name</b></div>
+    <div flex=10><b>Date</b></div>
+</div>
+<br>
+<div layout="column" ng-repeat="event in events">
+    <div layout="row">
+    <div style="padding-top: 15px;" flex=5>{{$index+1}}.</div>
+    <div style="padding-top: 15px;text-overflow: ellipsis;" flex=30>{{event.name}}</div>
+    <div style="padding-top: 15px;text-overflow: ellipsis;" flex=30>{{event.venue}}</div>
+    <div style="padding-top: 15px;text-overflow: ellipsis;" flex=15>{{event.incharge}}</div>
+    <div style="padding-top: 15px;text-overflow: ellipsis;" flex=10>{{event.date}}</div>
+    <md-button flex=10 ng-init="show" ng-click="show=!show" class="md-primary md-raised">Details</md-button>
+    </div>
+    <md-card layout="column" style="padding: 5px 10px;background: rgba(140, 158, 255, 0.42);" ng-if="show">
+        <h4 style="padding-left: 8px;"><b>Event : </b>{{event.name}}<span style="font-size: 15px;padding-right:10px;float:right">{{event.date}}</span></h4>
+        <div style="padding: 0px 10px;text-overflow:inherit;width: 38vw;"><b>Venue : </b>{{event.venue}}</div>
+        <div style="padding: 0px 10px;text-overflow:inherit;width: 38vw;"><b>Time : </b>{{event.time}}</div>
+        <h4 style="padding-left: 8px;">About</h4>
+        <div style="padding: 15px 10px;text-overflow:inherit;width: 38vw;">{{event.description}}</div>
+        <h4 style="padding-left: 8px;">Contact Details</h4>
+        <div style="padding: 0px 10px;text-overflow:inherit;width: 38vw;">Incharge : {{event.incharge}}</div>
+        <div style="padding: 0px 10px;text-overflow:inherit;width: 38vw;">Department : {{event.department}}</div>
+        <div style="padding: 0px 10px;text-overflow:inherit;width: 38vw;">Phone : {{event.phone}}</div>
+    </md-card>
+    <md-divider ng-if="!$last"></md-divider>    
+    </div>
+
+</md-card>

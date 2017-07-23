@@ -1,1 +1,25 @@
-<p>Circular</p>
+<md-card layout="column" style="background: rgb(238, 238, 238);border-top: solid 3px rgba(0, 0, 0, 0.48);" class="md-padding">
+<div layout="row">
+    <div flex=5><b>S.No</b></div>
+    <div flex=50><b>Title</b></div>
+    <div flex=15><b>Date</b></div>
+    <div flex=30><b>From</b></div>
+</div>
+<br>
+<div layout="column" ng-repeat="circular in circulars">
+    <div layout="row">
+    <div style="padding-top: 15px;" flex=5>{{$index+1}}.</div>
+    <div style="padding-top: 15px;text-overflow: ellipsis;" flex=50>{{circular.title}}</div>
+    <div style="padding-top: 15px;text-overflow: ellipsis;" flex=15>{{circular.date}}</div>
+    <div style="padding-top: 15px;text-overflow: ellipsis;" flex=20>{{circular.from}}</div>
+    <md-button flex=10 ng-init="show" ng-click="show=!show" class="md-primary md-raised">VIEW</md-button>
+    </div>
+    <md-card layout="column" style="padding: 5px 10px;background: rgba(140, 158, 255, 0.42);" ng-if="show">
+        <h4 style="padding-left: 8px;">{{circular.title}}<span style="font-size: 15px;padding-right:10px;float:right">{{circular.date}}</span></h4>
+        <b style="padding: 0px 10px;text-overflow:inherit;width: 38vw;">{{circular.from}}</b>
+        <div style="padding: 15px 10px;text-overflow:inherit;width: 38vw;">{{circular.description}}</div>
+    </md-card>
+    <md-divider ng-if="!$last"></md-divider>    
+    </div>
+
+</md-card>

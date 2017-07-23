@@ -1,8 +1,10 @@
 <md-content layout="column" class="md-padding">
     <md-card style="background: rgb(238, 238, 238);border-top: solid 3px rgba(0, 0, 0, 0.48);" class="md-padding">
-        <canvas id="attendanceChart"></canvas>
+        <h4>Monthly Attendance</h3>
+        <attendance-view></attendance-view>
     </md-card>
     <md-card style="background: rgb(238, 238, 238);border-top: solid 3px rgba(0, 0, 0, 0.48);" class="md-padding">
-        <canvas id="gpaChart" ></canvas>           
-    </md-card>    
+        <h4>Semester Percentage(GPA)</h3>
+        <nvd3 options="gpaOptions" data="gpaData"></nvd3> 
+   </md-card>    
 </md-content>

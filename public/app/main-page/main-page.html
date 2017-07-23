@@ -25,7 +25,7 @@
          
          <md-list-item class="link" ng-click="changeView(link,$index)" ng-init="icon=['icon-dashboard','icon-user','icon-calendar','icon-bell',
          'icon-bar-chart','icon-inr','icon-edit','icon-align-justify','icon-bookmark',
-         'icon-list-alt','icon-envelope-alt','icon-book']" ng-repeat="link in links">
+         'icon-list-alt','icon-book']" ng-repeat="link in links">
                <i ng-class="icon[$index]"></i>
                <span style="font-size:15px;padding-left: 8px;">{{link}}</span> 
          </md-list-item>  
@@ -55,13 +55,12 @@
       <div flex>
         <acadamic-planner-view ng-if="showDirective[2]" style="overflow:auto"></acadamic-planner-view>
         <attendance-view ng-if="showDirective[3]" style="overflow:auto"></attendance-view>
-        <circular-view ng-if="showDirective[11]" style="overflow:auto"></circular-view>
+        <circular-view ng-if="showDirective[10]" style="overflow:auto"></circular-view>
         <dashboard-view ng-if="showDirective[0]" style="overflow:auto"></dashboard-view>
         <events-view ng-if="showDirective[9]" style="overflow:auto"></events-view>
         <exam-results-view ng-if="showDirective[7]" style="overflow:auto"></exam-results-view>
         <feedback-view ng-if="showDirective[8]" style="overflow:auto"></feedback-view>
         <fees-details-view  ng-if="showDirective[5]" style="overflow:auto"></fees-details-view>
-        <greetings-view ng-if="showDirective[10]" style="overflow:auto"></greetings-view>
         <library-status-view ng-if="showDirective[6]" style="overflow:auto"></library-status-view>
         <mark-detail-view ng-if="showDirective[4]" style="overflow:auto"></mark-detail-view>
         <profile-view ng-if="showDirective[1]" style="overflow:auto"></profile-view>

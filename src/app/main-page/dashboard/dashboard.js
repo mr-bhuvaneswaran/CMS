@@ -2,111 +2,60 @@ function dashboardView(){
     return {
         restrict:'E',
         templateUrl:'app/main-page/dashboard/dashboard.html',
-        controller:function(){
-var attendance = document.getElementById("attendanceChart");
-var gpa = document.getElementById("gpaChart");
-
-var myChart = new Chart(attendance, {
-    type: 'bar',
-
-   data:{
-   labels: ["June", "July", "August", "September"],
-        datasets: [{
-            data: [70, 80, 93.6, 79],
-            backgroundColor: 'rgb(121,134,203)',
-            borderWidth: 0
-        }]
-},
-    options: {
-        showAllTooltips: true,
-		    showAllTooltips: true,
-		    tooltips: {
-		      custom: function(tooltip) {
-		        if (!tooltip) return;
-		        tooltip.displayColors = false;
-		      },
-		      callbacks: {
-		        label: function(tooltipItem, data) {
-		          return tooltipItem.xLabel + " : " + tooltipItem.yLabel + "%";
-		        },
-		        title: function(tooltipItem, data) {
-		          return;
-		        }
-          }
-        },
-        legend: {
-            display: false
-         },
-        scales: {
-            
-            yAxes: [{
-            ticks: {
-            
-                   min: 0,
-                   max: 100,
-                   stepSize: 25,
-                   callback: function(value){return value+ "%"}
-                },  
-				   scaleLabel: {
-                   display: true,
-                   labelString: "Percentage"
+        controller:function($scope){
+$scope.gpaOptions = {
+            chart: {
+                type: 'discreteBarChart',
+                height: 450,
+                width: 1000,
+                margin : {
+                    top: 20,
+                    right: 20,
+                    bottom: 50,
+                    left: 55
+                },
+                x: function(d){return d.label;},
+                y: function(d){return d.value;},
+                yDomain: [0, 10],
+                
+                xAxis: {
+                    axisLabel: 'Semester',
+                    axisLabelDistance: -10,
+                },
+                yAxis: {
+                    ticks: 10,
+                    axisLabelDistance: -10,
+                    axisLabel: 'GPA',
+                    tickFormat: function(d){
+                      return d3.format('.2f')(d);
+                    }
                 }
-            }]
-        }
-    }
-});
-var gpaChart = new Chart(gpa, {
-          type: 'bar',
-          data:{
-          labels: ["1", "2", "3", "4"],
-          datasets: [{
-            data: [9.4, 8.8, 8.7, 8.6],
-            backgroundColor: 'rgb(121,134,203)',
-            borderWidth: 0
-        }]
-          },
-        options: {
-        showAllTooltips: true,
-		    showAllTooltips: true,
-		    tooltips: {
-		      custom: function(tooltip) {
-		        if (!tooltip) return;
-		        tooltip.displayColors = false;
-		      },
-		      callbacks: {
-		        label: function(tooltipItem, data) {
-		          return tooltipItem.yLabel;
-		        },
-		        title: function(tooltipItem, data) {
-		          return;
-		        }
-          }
-        },
-        legend: {
-            display: false
-         },
-        scales: {
-            
-            yAxes: [{
-            ticks: {
-            
-                   min: 0,
-                   max: 10,
-                   stepSize: 2,                   
-                   callback: function(value){return value}
-                },  
-				   scaleLabel: {
-                   display: true,
-                   labelString: "GPA"
-                }
-            }]
-        }
-    }
-});
+            }
+        };
 
-            
-
-        }
+        $scope.gpaData = [
+            {
+                values: [
+                    {
+                        "label" : "Sem 1" ,
+                        "value" : 9.04
+                    } ,
+                    {
+                        "label" : "Sem 2" ,
+                        "value" : 8.8
+                    } ,
+                    {
+                        "label" : "Sem 3" ,
+                        "value" : 8.7
+                    } ,
+                    {
+                        "label" : "Sem 4" ,
+                        "value" : 8.6
+                    }
+                ]
+            }
+        ];     
+     }
     };
 }
 module.exports= dashboardView;
