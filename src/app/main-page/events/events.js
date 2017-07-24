@@ -5,7 +5,7 @@ function eventsView(){
         controller:function($scope){
            $scope.events = [{
                name:"Yuddavarna",
-               venue:"M.kumarasamy college of Engineering,karur 888888888888888888888888888888888888888888",
+               venue:"M.kumarasamy college of Engineering,karur",
                incharge:"Mr.Prem Kumar",
                date:"08/05/2017",
                time:"9:00 AM - 6:00 PM",

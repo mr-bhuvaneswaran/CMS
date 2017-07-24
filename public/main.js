@@ -74733,7 +74733,7 @@ function eventsView(){
         controller:function($scope){
            $scope.events = [{
                name:"Yuddavarna",
-               venue:"M.kumarasamy college of Engineering,karur 888888888888888888888888888888888888888888",
+               venue:"M.kumarasamy college of Engineering,karur",
                incharge:"Mr.Prem Kumar",
                date:"08/05/2017",
                time:"9:00 AM - 6:00 PM",
@@ -74843,7 +74843,119 @@ function feesDetailsView(){
     return {
         restrict:'E',
         templateUrl:'app/main-page/fees-details/fees-details.html',
-        controller:function(){
+        controller:function($scope){
+            $scope.fees = [{
+                name:"Tution Fees",
+                apply_date:"07/08/2017",
+                due_date:"08/05/2018",
+                fee_amt:50000,
+                paid_amt:20000,
+                balance_amt:30000
+            },
+            {
+                name:"Tution Fees",
+                apply_date:"07/08/2017",
+                due_date:"08/05/2018",
+                fee_amt:50000,
+                paid_amt:20000,
+                balance_amt:30000
+            },
+            {
+                name:"Tution Fees",
+                apply_date:"07/08/2017",
+                due_date:"08/05/2018",
+                fee_amt:50000,
+                paid_amt:20000,
+                balance_amt:30000
+            },
+            {
+                name:"Tution Fees",
+                apply_date:"07/08/2017",
+                due_date:"08/05/2018",
+                fee_amt:50000,
+                paid_amt:20000,
+                balance_amt:30000
+            },
+            {
+                name:"Tution Fees",
+                apply_date:"07/08/2017",
+                due_date:"08/05/2018",
+                fee_amt:50000,
+                paid_amt:20000,
+                balance_amt:30000
+            },
+            {
+                name:"Tution Fees",
+                apply_date:"07/08/2017",
+                due_date:"08/05/2018",
+                fee_amt:50000,
+                paid_amt:20000,
+                balance_amt:30000
+            },
+            {
+                name:"Tution Fees",
+                apply_date:"07/08/2017",
+                due_date:"08/05/2018",
+                fee_amt:50000,
+                paid_amt:20000,
+                balance_amt:30000
+            },
+            {
+                name:"Tution Fees",
+                apply_date:"07/08/2017",
+                due_date:"08/05/2018",
+                fee_amt:50000,
+                paid_amt:20000,
+                balance_amt:30000
+            },
+            {
+                name:"Tution Fees",
+                apply_date:"07/08/2017",
+                due_date:"08/05/2018",
+                fee_amt:50000,
+                paid_amt:20000,
+                balance_amt:30000
+            },
+            {
+                name:"Tution Fees",
+                apply_date:"07/08/2017",
+                due_date:"08/05/2018",
+                fee_amt:50000,
+                paid_amt:20000,
+                balance_amt:30000
+            },
+            {
+                name:"Tution Fees",
+                apply_date:"07/08/2017",
+                due_date:"08/05/2018",
+                fee_amt:50000,
+                paid_amt:20000,
+                balance_amt:30000
+            },
+            {
+                name:"Tution Fees",
+                apply_date:"07/08/2017",
+                due_date:"08/05/2018",
+                fee_amt:50000,
+                paid_amt:20000,
+                balance_amt:30000
+            },
+            {
+                name:"Tution Fees",
+                apply_date:"07/08/2017",
+                due_date:"08/05/2018",
+                fee_amt:50000,
+                paid_amt:20000,
+                balance_amt:30000
+            },
+            {
+                name:"Tution Fees",
+                apply_date:"07/08/2017",
+                due_date:"08/05/2018",
+                fee_amt:50000,
+                paid_amt:20000,
+                balance_amt:30000
+            }]
 
         }
     };

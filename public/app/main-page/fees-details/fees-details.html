@@ -1,1 +1,25 @@
-<p>Fees details</p>
+<md-card layout="column" style="background: rgb(238, 238, 238);border-top: solid 3px rgba(0, 0, 0, 0.48);" class="md-padding">
+<div layout="row">
+    <div flex=5><b>S.No</b></div>
+    <div flex=20><b>Fee Name</b></div>
+    <div flex=10><b>Apply Date</b></div>
+    <div flex=10><b>Due Date</b></div>
+    <div flex=20><b>Fee Amt( <i class="icon-inr"></i> )</b></div>
+    <div flex=20><b>Paid Amt( <i class="icon-inr"></i> )</b></div>
+    <div flex=15><b>Balance Amt( <i class="icon-inr"></i> )</b></div>
+</div>
+<br>
+<div layout="column" ng-repeat="fee in fees">
+    <div layout="row">
+    <div style="padding-top: 15px;" flex=5>{{$index+1}}.</div>
+    <div style="padding-top: 15px;padding-right: 25px;text-overflow: ellipsis;white-space: nowrap;overflow: hidden;" flex=20>{{fee.name}}</div>
+    <div style="padding-top: 15px;padding-right: 15px;text-overflow: ellipsis;white-space: nowrap;overflow: hidden;" flex=10>{{fee.apply_date}}</div>
+    <div style="padding-top: 15px;padding-right: 15px;text-overflow: ellipsis;white-space: nowrap;overflow: hidden;" flex=10>{{fee.due_date}}</div>
+    <div style="padding-top: 15px;padding-right: 45px;text-overflow: ellipsis;white-space: nowrap;overflow: hidden;" flex=20>{{fee.fee_amt}}</div>
+    <div style="padding-top: 15px;padding-right: 45px;text-overflow: ellipsis;white-space: nowrap;overflow: hidden;" flex=20>{{fee.paid_amt}}</div>
+    <div style="padding-top: 15px;padding-right: 25px;text-overflow: ellipsis;white-space: nowrap;overflow: hidden;" flex=15>{{fee.balance_amt}}</div>
+    </div>
+    <md-divider ng-if="!$last"></md-divider>    
+    </div>
+
+</md-card>

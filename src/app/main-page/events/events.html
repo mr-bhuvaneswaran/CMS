@@ -2,18 +2,18 @@
 <div layout="row">
     <div flex=5><b>S.No</b></div>
     <div flex=30><b>Event Name</b></div>
-    <div flex=30><b>Venue</b></div>
-    <div flex=15><b>Incharge Name</b></div>
-    <div flex=10><b>Date</b></div>
+    <div flex=25><b>Venue</b></div>
+    <div style="padding-left: 45px;" flex=10><b>Incharge</b></div>
+    <div style="padding-left: 95px;" flex=10><b>Date</b></div>
 </div>
 <br>
 <div layout="column" ng-repeat="event in events">
     <div layout="row">
     <div style="padding-top: 15px;" flex=5>{{$index+1}}.</div>
-    <div style="padding-top: 15px;text-overflow: ellipsis;" flex=30>{{event.name}}</div>
-    <div style="padding-top: 15px;text-overflow: ellipsis;" flex=30>{{event.venue}}</div>
-    <div style="padding-top: 15px;text-overflow: ellipsis;" flex=15>{{event.incharge}}</div>
-    <div style="padding-top: 15px;text-overflow: ellipsis;" flex=10>{{event.date}}</div>
+    <div style="padding-top: 15px;padding-right: 45px;text-overflow: ellipsis;white-space: nowrap;overflow: hidden;" flex=30>{{event.name}}</div>
+    <div style="padding-top: 15px;padding-right: 45px;text-overflow: ellipsis;white-space: nowrap;overflow: hidden;" flex=30>{{event.venue}}</div>
+    <div style="padding-top: 15px;padding-right: 30px;text-overflow: ellipsis;white-space: nowrap;overflow: hidden;" flex=15>{{event.incharge}}</div>
+    <div style="padding-top: 15px;padding-right: 30px;text-overflow: ellipsis;white-space: nowrap;overflow: hidden;" flex=10>{{event.date}}</div>
     <md-button flex=10 ng-init="show" ng-click="show=!show" class="md-primary md-raised">Details</md-button>
     </div>
     <md-card layout="column" style="padding: 5px 10px;background: rgba(140, 158, 255, 0.42);" ng-if="show">
