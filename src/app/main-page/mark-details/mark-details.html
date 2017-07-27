@@ -1,1 +1,37 @@
-<p>Mark details</p>
+<md-tabs style="font-size: 12px;" class="mark" md-dynamic-height md-border-bottom>
+      <md-tab label="Sem-{{$index+1}}" md-primary ng-repeat="mark in markDetails">
+        <md-card layout="column" style="background: rgb(238, 238, 238);border-top: solid 3px rgba(0, 0, 0, 0.48);" class="md-padding">   
+        <md-content class="md-padding">
+          <div layout="row">
+            <div flex=5><b>S.No</b></div>
+            <div flex=10><b>Subject Code</b></div>
+            <div flex=35><b>Subject Name</b></div>
+            <div flex=10><b>Min Marks</b></div>
+            <div flex=10><b>Max Marks</b></div>
+            <div flex=15><b>Obtained Mark</b></div>
+            <div flex=10><b>First Mark</b></div>
+            <div flex=5><b>Status</b></div>
+         </div>
+        <br>
+          <div layout="column" ng-repeat="fee in fees">
+            <div layout="row">
+            <div style="padding-top: 15px;" flex=5>{{$index+1}}.</div>
+            <div style="padding-top: 15px;padding-right: 25px;text-overflow: ellipsis;white-space: nowrap;overflow: hidden;" flex=20>{{fee.name}}</div>
+            <div style="padding-top: 15px;padding-right: 15px;text-overflow: ellipsis;white-space: nowrap;overflow: hidden;" flex=10>{{fee.apply_date}}</div>
+            <div style="padding-top: 15px;padding-right: 15px;text-overflow: ellipsis;white-space: nowrap;overflow: hidden;" flex=10>{{fee.due_date}}</div>
+            <div style="padding-top: 15px;padding-right: 45px;text-overflow: ellipsis;white-space: nowrap;overflow: hidden;" flex=20>{{fee.fee_amt}}</div>
+            <div style="padding-top: 15px;padding-right: 45px;text-overflow: ellipsis;white-space: nowrap;overflow: hidden;" flex=20>{{fee.paid_amt}}</div>
+            <div style="padding-top: 15px;padding-right: 25px;text-overflow: ellipsis;white-space: nowrap;overflow: hidden;" flex=15>{{fee.balance_amt}}</div>
+          </div>
+          <md-divider ng-if="!$last"></md-divider>    
+        </div>
+        </md-content>
+        </md-card>
+      </md-tab>
+</md-tabs>
+<style>
+    .mark md-tabs.md-default-theme md-ink-bar, md-tabs md-ink-bar {
+    color: rgb(63, 81, 181);
+    background-color:rgb(63, 81, 181);
+}
+</style>

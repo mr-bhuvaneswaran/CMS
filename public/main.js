@@ -74966,7 +74966,114 @@ function libraryStatusView(){
     return {
         restrict:'E',
         templateUrl:'app/main-page/library-status/library-status.html',
-        controller:function(){
+        controller:function($scope){
+             $scope.libraryDetails = [{
+                 bookName:"Computer Networking",
+                 bookId:"CS127",
+                 issuedDate:"07/08/2017",
+                 renewalDate:"22/08/2017",
+                 returnDate:"06/09/2017",
+                 fineAmt:40,
+                 status:"ISSUED"
+             },
+             {
+                 bookName:"Computer Networking",
+                 bookId:"CS127",
+                 issuedDate:"07/08/2017",
+                 renewalDate:"22/08/2017",
+                 returnDate:"06/09/2017",
+                 fineAmt:40,
+                 status:"ISSUED"
+             },
+             {
+                 bookName:"Computer Networking",
+                 bookId:"CS127",
+                 issuedDate:"07/08/2017",
+                 renewalDate:"22/08/2017",
+                 returnDate:"06/09/2017",
+                 fineAmt:40,
+                 status:"ISSUED"
+             },{
+                 bookName:"Computer Networking",
+                 bookId:"CS127",
+                 issuedDate:"07/08/2017",
+                 renewalDate:"22/08/2017",
+                 returnDate:"06/09/2017",
+                 fineAmt:40,
+                 status:"ISSUED"
+             },{
+                 bookName:"Computer Networking",
+                 bookId:"CS127",
+                 issuedDate:"07/08/2017",
+                 renewalDate:"22/08/2017",
+                 returnDate:"06/09/2017",
+                 fineAmt:40,
+                 status:"ISSUED"
+             },{
+                 bookName:"Computer Networking",
+                 bookId:"CS127",
+                 issuedDate:"07/08/2017",
+                 renewalDate:"22/08/2017",
+                 returnDate:"06/09/2017",
+                 fineAmt:40,
+                 status:"ISSUED"
+             },{
+                 bookName:"Computer Networking",
+                 bookId:"CS127",
+                 issuedDate:"07/08/2017",
+                 renewalDate:"22/08/2017",
+                 returnDate:"06/09/2017",
+                 fineAmt:40,
+                 status:"ISSUED"
+             },{
+                 bookName:"Computer Networking",
+                 bookId:"CS127",
+                 issuedDate:"07/08/2017",
+                 renewalDate:"22/08/2017",
+                 returnDate:"06/09/2017",
+                 fineAmt:40,
+                 status:"ISSUED"
+             },{
+                 bookName:"Computer Networking",
+                 bookId:"CS127",
+                 issuedDate:"07/08/2017",
+                 renewalDate:"22/08/2017",
+                 returnDate:"06/09/2017",
+                 fineAmt:40,
+                 status:"ISSUED"
+             },{
+                 bookName:"Computer Networking",
+                 bookId:"CS127",
+                 issuedDate:"07/08/2017",
+                 renewalDate:"22/08/2017",
+                 returnDate:"06/09/2017",
+                 fineAmt:40,
+                 status:"ISSUED"
+             },{
+                 bookName:"Computer Networking",
+                 bookId:"CS127",
+                 issuedDate:"07/08/2017",
+                 renewalDate:"22/08/2017",
+                 returnDate:"06/09/2017",
+                 fineAmt:40,
+                 status:"ISSUED"
+             },{
+                 bookName:"Computer Networking",
+                 bookId:"CS127",
+                 issuedDate:"07/08/2017",
+                 renewalDate:"22/08/2017",
+                 returnDate:"06/09/2017",
+                 fineAmt:40,
+                 status:"ISSUED"
+             },{
+                 bookName:"Computer Networking",
+                 bookId:"CS127",
+                 issuedDate:"07/08/2017",
+                 renewalDate:"22/08/2017",
+                 returnDate:"06/09/2017",
+                 fineAmt:40,
+                 status:"ISSUED"
+             }]   
 
         }
     };
@@ -75058,7 +75165,26 @@ function markDetailView(){
     return {
         restrict:'E',
         templateUrl:'app/main-page/mark-details/mark-details.html',
-        controller:function(){
+        controller:function($scope){
+            $scope.markDetails = [{
+                semNO:1,
+
+            },{
+                semNO:2,
+                
+            },{
+                semNO:3,
+                
+            },{
+                semNO:4,
+                
+            },{
+                semNO:5,
+                
+            },{
+                semNO:6,
+                
+            }]
 
         }
     };
