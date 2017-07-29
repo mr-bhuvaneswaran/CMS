@@ -75444,9 +75444,7 @@ function mainPageCtrl($scope,$mdToast, $mdSidenav,$timeout,$mdPanel){
       $mdSidenav('left').close()
     }
     $scope.selected="Dashboard"
-    $scope.toggle=function(){
-        $scope.navshow=!$scope.navshow
-    }
+    
     $scope.toggleLeft = buildDelayedToggler('left');
     function debounce(func, wait, context) {
       var timer;
@@ -76900,59 +76898,45 @@ function profileView(){
                 name:"BHUVANESWARAN B",
                 batch:"2015-2019",
                 department:"CSE",
-                rollNo:"15BCS2015",
-                dateOfBirth:"08/05/1998",
+                roll_no:"15BCS2015",
+                date_of_birth:"08/05/1998",
                 gender:"Male",
-                fatherName:"BASKARAN C",
-                motherName:"CHANDRA",
+                father_name:"BASKARAN C",
+                mother_name:"CHANDRA",
                 income:40000.00,
                 religion:"Hindu",
                 community:"Backward Community",
                 caste:"YADAVA",
                 nationality:"INDIAN",
-                motherTongue:"TAMIL",
-                placeOfBirth:"MADURAI",
-                financialCategory:"self",
-                admissionType:"Regular",
-                admissionCategory:"Government Quota",
-                primaryAddress:{
-                    addressLine1:"B,93 Housing Board",
-                    addressLine2:"West ayakudi",
-                    addressLine3:"Palani-624613"
-                },
-                secondaryAddress:{
-                    addressLine1:"B,93 Housing Board",
-                    addressLine2:"West ayakudi",
-                    addressLine3:"Palani-624613"
-                },
-                medicalInformation:{
-                    height:170,
-                    weight:58.00,
-                    bloodGroup:"O+",
-                    physicallyChallenged:"YES",
-                    eyeColour:"Brown",
-                    eyeSight:"Normal",
-                    identification:{
-                        mole:"On left hand wrist",
-                        scar:"On left leg ankle"
-                    }
-                },
-                educationalInformations:[{
+                mother_tongue:"TAMIL",
+                place_of_birth:"MADURAI",
+                financial_category:"self",
+                admission_type:"Regular",
+                admission_category:"Government Quota",
+                primary_address:"B,93 Housing Board,West ayakudi,Palani-624613",
+                secondary_address:"B,93 Housing Board,West ayakudi,Palani-624613",
+                height:170,
+                weight:58.00,
+                blood_group:"O+",
+                physically_challenged:"YES",
+                eye_colour:"Brown",
+                eye_sight:"Normal",
+                mole:"On left hand wrist",
+                scar:"On left leg ankle",
+                educational_informations:[{
                     course:"10th",
                     institute:"Swamy Matriculation Higher Secondary School",
                     place:"Palani",
                     percentage:94.00,
-                    yearOfPassedOut:2013,
+                    year_of_passedout:2013,
                 },{
                     course:"12th",
                     institute:"Swamy Matriculation Higher Secondary School",
                     place:"Palani",
                     percentage:93.00,
-                    yearOfPassedOut:2015,
-                },],
-
-
-
+                    year_of_passedout:2015,
+                }
+                ]
             }
 
         }

@@ -21,9 +21,7 @@ function mainPageCtrl($scope,$mdToast, $mdSidenav,$timeout,$mdPanel){
       $mdSidenav('left').close()
     }
     $scope.selected="Dashboard"
-    $scope.toggle=function(){
-        $scope.navshow=!$scope.navshow
-    }
+    
     $scope.toggleLeft = buildDelayedToggler('left');
     function debounce(func, wait, context) {
       var timer;
