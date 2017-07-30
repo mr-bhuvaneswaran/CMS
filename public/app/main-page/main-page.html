@@ -25,7 +25,7 @@
          
          <md-list-item class="link" ng-click="changeView(link,$index)" ng-init="icon=['icon-dashboard','icon-user','icon-calendar','icon-bell',
          'icon-bar-chart','icon-inr','icon-edit','icon-align-justify','icon-bookmark',
-         'icon-list-alt','icon-envelope-alt','icon-book']" ng-repeat="link in links">
+         'icon-list-alt','icon-book']" ng-repeat="link in links">
                <i ng-class="icon[$index]"></i>
                <span style="font-size:15px;padding-left: 8px;">{{link}}</span> 
          </md-list-item>  
@@ -36,7 +36,6 @@
     <div flex layout="column" style="height:100vh">
       <md-toolbar class="md-theme-indigo" layout="row" style="padding:0px;" md-highlight="false" >
             <md-icon class="link" ng-click="toggleLeft()" hide-gt-sm style="margin: 16px;height: 30px;width: 30px;" md-svg-icon="/assets/images/icons/menu.svg"></md-icon>
-            <md-icon id="menu" class="link" ng-click="toggle()"  style="margin: 16px;height: 30px;width: 30px;" md-svg-icon="/assets/images/icons/menu.svg"></md-icon>
             <span flex></span>
             <div id="profile" class="link-background link " ng-click="showToolbarMenu($event)" style="margin-right: 15px;padding: 22px;font-size: 14px;">
             <i class="icon-user" ></i>
@@ -55,13 +54,12 @@
       <div flex>
         <acadamic-planner-view ng-if="showDirective[2]" style="overflow:auto"></acadamic-planner-view>
         <attendance-view ng-if="showDirective[3]" style="overflow:auto"></attendance-view>
-        <circular-view ng-if="showDirective[11]" style="overflow:auto"></circular-view>
+        <circular-view ng-if="showDirective[10]" style="overflow:auto"></circular-view>
         <dashboard-view ng-if="showDirective[0]" style="overflow:auto"></dashboard-view>
         <events-view ng-if="showDirective[9]" style="overflow:auto"></events-view>
         <exam-results-view ng-if="showDirective[7]" style="overflow:auto"></exam-results-view>
         <feedback-view ng-if="showDirective[8]" style="overflow:auto"></feedback-view>
         <fees-details-view  ng-if="showDirective[5]" style="overflow:auto"></fees-details-view>
-        <greetings ng-if="showDirective[10]" style="overflow:auto"></greetings>
         <library-status-view ng-if="showDirective[6]" style="overflow:auto"></library-status-view>
         <mark-detail-view ng-if="showDirective[4]" style="overflow:auto"></mark-detail-view>
         <profile-view ng-if="showDirective[1]" style="overflow:auto"></profile-view>

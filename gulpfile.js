@@ -54,7 +54,7 @@ gulp.task('build',['lint', 'scss', 'images', 'copy', 'scripts']);
 
 gulp.task('browser-sync', ['build'], function() {
     browserSync.init({
-	port : 8000,
+	port : 8080,
         server: {
             baseDir: "./public",
             // The key is the url to match

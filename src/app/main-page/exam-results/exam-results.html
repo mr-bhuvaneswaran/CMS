@@ -1,1 +1,47 @@
-<p>Exam results</p>
+<md-tabs style="font-size: 12px;" class="result" md-dynamic-height md-border-bottom>
+      <md-tab label="Sem-{{$index+1}}" md-primary ng-repeat="sem in examResults">
+        <md-card layout="column" style="background: rgb(238, 238, 238);border-top: solid 3px rgba(0, 0, 0, 0.48);" class="md-padding">   
+        <md-content class="md-padding">
+          <md-divider></md-divider>
+          <div layout="row" style="padding-top:10px">
+            <div flex=5 style="padding-left:5px"><b>S.No</b></div>
+            <div flex=10><b>Sem No</b></div>            
+            <div flex=10><b>Subject Code</b></div>
+            <div flex=35><b>Subject Name</b></div>
+            <div flex=10><b>Grade</b></div>
+            <div flex=10><b>Grade Point</b></div>
+            <div flex=10><b>Credit Point</b></div>
+            <div flex=10><b>Status</b></div>
+         </div>
+          <div layout="column">
+            <div layout="row" ng-class="{'fail':subject.status == 'Fail','pass':subject.status == 'Pass'}" ng-repeat="subject in sem.subjects">
+            <div style="padding-top: 5px;padding-bottom: 5px;padding-left:5px;" flex=5>{{$index+1}}.</div>
+            <div style="padding-top: 5px;padding-bottom: 5px;padding-right: 25px;text-overflow: ellipsis;white-space: nowrap;overflow: hidden;" flex=10>{{subject.sem_no}}</div>
+            <div style="padding-top: 5px;padding-bottom: 5px;padding-right: 25px;text-overflow: ellipsis;white-space: nowrap;overflow: hidden;" flex=10>{{subject.subject_code}}</div>    
+            <div style="padding-top: 5px;padding-bottom: 5px;padding-right: 15px;text-overflow: ellipsis;white-space: nowrap;overflow: hidden;" flex=35>{{subject.subject_name}}</div>
+            <div style="padding-top: 5px;padding-bottom: 5px;padding-right: 15px;text-overflow: ellipsis;white-space: nowrap;overflow: hidden;" flex=10>{{subject.grade}}</div>
+            <div style="padding-top: 5px;padding-bottom: 5px;padding-right: 45px;text-overflow: ellipsis;white-space: nowrap;overflow: hidden;" flex=10>{{subject.grade.point}}</div>
+            <div style="padding-top: 5px;padding-bottom: 5px;padding-right: 45px;text-overflow: ellipsis;white-space: nowrap;overflow: hidden;" flex=10>{{subject.credit_point}}</div>
+            <div style="padding-top: 5px;padding-bottom: 5px;padding-right: 25px;text-overflow: ellipsis;white-space: nowrap;overflow: hidden;" flex=10>{{subject.status}}</div>
+          </div>
+          <md-divider style="margin-top:10px" ng-if="!$last"></md-divider>    
+        </div>
+        </md-content>
+        </md-card>
+      </md-tab>
+</md-tabs>
+<style>
+    .result md-tabs.md-default-theme md-ink-bar, md-tabs md-ink-bar {
+    color: rgb(63, 81, 181);
+    background-color:rgb(63, 81, 181);
+}
+    .result .pass{
+      background-color: rgba(140, 158, 255, 0.51);
+    }
+    .result .pass:hover{
+      background-color: rgb(121,134,203);
+    }
+    .result .fail{
+      background-color: pink;
+    }
+</style>

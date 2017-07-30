@@ -15,13 +15,13 @@ function mainPageCtrl($scope,$mdToast, $mdSidenav,$timeout,$mdPanel){
     $scope.links=['Dashboard','Profile',
     'Acadamic Planner','Attendance',
     'Mark Detail','Fees Detail','Library Status',
-    'Exam Results','Feedback','Events','Greetings','Circular']
+    'Exam Results','Feedback','Events','Circular']
 
-    
-    $scope.selected="Dashboard"
-    $scope.toggle=function(){
-        $scope.navshow=!$scope.navshow
+    $scope.close = function () {
+      $mdSidenav('left').close()
     }
+    $scope.selected="Dashboard"
+    
     $scope.toggleLeft = buildDelayedToggler('left');
     function debounce(func, wait, context) {
       var timer;

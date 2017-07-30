@@ -74482,7 +74482,7 @@ myApp.config(['$locationProvider', '$routeProvider', function($locationProvider,
   });
 }]);
 
-},{"./login/login-module.js":12,"./main-page/main-page-module.js":24,"moment":9}],11:[function(require,module,exports){
+},{"./login/login-module.js":12,"./main-page/main-page-module.js":23,"moment":9}],11:[function(require,module,exports){
 'use strict';
 
 function loginCtrl($scope,$mdToast,$location){
@@ -74536,9 +74536,65 @@ function attendanceView(){
     return {
         restrict:'E',
         templateUrl:'app/main-page/attendance/attendance.html',
-        controller:function(){
+        controller:function($scope){
+          $scope.options = {
+            chart: {
+                type: 'discreteBarChart',
+                height: 450,
+                margin : {
+                    top: 20,
+                    right: 20,
+                    bottom: 50,
+                    left: 55
+                },
+                x: function(d){return d.label;},
+                y: function(d){return d.value;},
+                yDomain: [0, 100],
+                xAxis: {
+                    axisLabel: 'Months',
+                    axisLabelDistance: -10,
+                },
+                yAxis: {
+                    axisLabelDistance: -10,
+                    axisLabel: 'Percentage',
+                    tickFormat: function(d){
+                      return d3.format('.0%')(d*0.01);
+                    }
+                }
+            }
+        };
 
-        }
+        $scope.data = [
+            {
+                values: [
+                    {
+                        "label" : "June" ,
+                        "value" : 70
+                    } ,
+                    {
+                        "label" : "July" ,
+                        "value" : 60
+                    } ,
+                    {
+                        "label" : "August" ,
+                        "value" : 79
+                    } ,
+                    {
+                        "label" : "September" ,
+                        "value" : 81
+                    } ,
+                    {
+                        "label" : "October" ,
+                        "value" : 90
+                    } ,
+                    {
+                        "label" : "November" ,
+                        "value" : 88
+                    }
+                ]
+            }
+        ]
+}
     };
 }
 module.exports= attendanceView;
@@ -74547,7 +74603,61 @@ function circularView(){
     return {
         restrict:'E',
         templateUrl:'app/main-page/circular/circular.html',
-        controller:function(){
+        controller:function($scope){
+            $scope.circulars=[{
+                title:"Internal Exam TimeTable",
+                date:"08/07/2017",
+                from:"COE",
+                description:"Exam are postponed due to rain all the exam will be conducted after the leave"
+            },
+            {
+                title:"Internal Exam TimeTable",
+                date:"08/07/2017",
+                from:"COE",
+                description:"Exam are postponed due to rain all the exam will be conducted after the leave"
+            },
+            {
+                title:"Internal Exam TimeTable",
+                date:"08/07/2017",
+                from:"COE",
+                description:"Exam are postponed due to rain all the exam will be conducted after the leave"
+            },
+            {
+                title:"Internal Exam TimeTable",
+                date:"08/07/2017",
+                from:"COE",
+                description:"Exam are postponed due to rain all the exam will be conducted after the leave"
+            },
+            {
+                title:"Internal Exam TimeTable",
+                date:"08/07/2017",
+                from:"COE",
+                description:"Exam are postponed due to rain all the exam will be conducted after the leave"
+            },
+            {
+                title:"Internal Exam TimeTable",
+                date:"08/07/2017",
+                from:"COE",
+                description:"Exam are postponed due to rain all the exam will be conducted after the leave"
+            },
+            {
+                title:"Internal Exam TimeTable",
+                date:"08/07/2017",
+                from:"COE",
+                description:"Exam are postponed due to rain all the exam will be conducted after the leave"
+            },
+            {
+                title:"Internal Exam TimeTable",
+                date:"08/07/2017",
+                from:"COE",
+                description:"Exam are postponed due to rain all the exam will be conducted after the leave"
+            },
+            {
+                title:"Internal Exam TimeTable",
+                date:"08/07/2017",
+                from:"COE",
+                description:"Exam are postponed due to rain all the exam will be conducted after the leave"
+            }]
 
         }
     };
@@ -74558,9 +74668,60 @@ function dashboardView(){
     return {
         restrict:'E',
         templateUrl:'app/main-page/dashboard/dashboard.html',
-        controller:function(){
+        controller:function($scope){
+$scope.gpaOptions = {
+            chart: {
+                type: 'discreteBarChart',
+                height: 450,
+                width: 1000,
+                margin : {
+                    top: 20,
+                    right: 20,
+                    bottom: 50,
+                    left: 55
+                },
+                x: function(d){return d.label;},
+                y: function(d){return d.value;},
+                yDomain: [0, 10],
+                
+                xAxis: {
+                    axisLabel: 'Semester',
+                    axisLabelDistance: -10,
+                },
+                yAxis: {
+                    ticks: 10,
+                    axisLabelDistance: -10,
+                    axisLabel: 'GPA',
+                    tickFormat: function(d){
+                      return d3.format('.2f')(d);
+                    }
+                }
+            }
+        };
 
-        }
+        $scope.gpaData = [
+            {
+                values: [
+                    {
+                        "label" : "Sem 1" ,
+                        "value" : 9.04
+                    } ,
+                    {
+                        "label" : "Sem 2" ,
+                        "value" : 8.8
+                    } ,
+                    {
+                        "label" : "Sem 3" ,
+                        "value" : 8.7
+                    } ,
+                    {
+                        "label" : "Sem 4" ,
+                        "value" : 8.6
+                    }
+                ]
+            }
+        ];     
+     }
     };
 }
 module.exports= dashboardView;
@@ -74569,7 +74730,87 @@ function eventsView(){
     return {
         restrict:'E',
         templateUrl:'app/main-page/events/events.html',
-        controller:function(){
+        controller:function($scope){
+           $scope.events = [{
+               name:"Yuddavarna",
+               venue:"M.kumarasamy college of Engineering,karur",
+               incharge:"Mr.Prem Kumar",
+               date:"08/05/2017",
+               time:"9:00 AM - 6:00 PM",
+               description:"A grand event with lot's of technical exposure for IT and CSE domain",
+               phone:"+919500245103",
+               department:"Computer Science and Engineerig"
+           },
+           {
+               name:"Yuddavarna",
+               venue:"M.kumarasamy college of Engineering,karur",
+               incharge:"Mr.Prem Kumar",
+               date:"08/05/2017",
+               time:"9:00 AM - 6:00 PM",
+               description:"A grand event with lot's of technical exposure for IT and CSE domain",
+               phone:"+919500245103",
+               department:"Computer Science and Engineerig"
+           },
+           {
+               name:"Yuddavarna",
+               venue:"M.kumarasamy college of Engineering,karur",
+               incharge:"Mr.Prem Kumar",
+               date:"08/05/2017",
+               time:"9:00 AM - 6:00 PM",
+               description:"A grand event with lot's of technical exposure for IT and CSE domain",
+               phone:"+919500245103",
+               department:"Computer Science and Engineerig"
+           },
+           {
+               name:"Yuddavarna",
+               venue:"M.kumarasamy college of Engineering,karur",
+               incharge:"Mr.Prem Kumar",
+               date:"08/05/2017",
+               time:"9:00 AM - 6:00 PM",
+               description:"A grand event with lot's of technical exposure for IT and CSE domain",
+               phone:"+919500245103",
+               department:"Computer Science and Engineerig"
+           },
+           {
+               name:"Yuddavarna",
+               venue:"M.kumarasamy college of Engineering,karur",
+               incharge:"Mr.Prem Kumar",
+               date:"08/05/2017",
+               time:"9:00 AM - 6:00 PM",
+               description:"A grand event with lot's of technical exposure for IT and CSE domain",
+               phone:"+919500245103",
+               department:"Computer Science and Engineerig"
+           },
+           {
+               name:"Yuddavarna",
+               venue:"M.kumarasamy college of Engineering,karur",
+               incharge:"Mr.Prem Kumar",
+               date:"08/05/2017",
+               time:"9:00 AM - 6:00 PM",
+               description:"A grand event with lot's of technical exposure for IT and CSE domain",
+               phone:"+919500245103",
+               department:"Computer Science and Engineerig"
+           },
+           {
+               name:"Yuddavarna",
+               venue:"M.kumarasamy college of Engineering,karur",
+               incharge:"Mr.Prem Kumar",
+               date:"08/05/2017",
+               time:"9:00 AM - 6:00 PM",
+               description:"A grand event with lot's of technical exposure for IT and CSE domain",
+               phone:"+919500245103",
+               department:"Computer Science and Engineerig"
+           },
+           {
+               name:"Yuddavarna",
+               venue:"M.kumarasamy college of Engineering,karur",
+               incharge:"Mr.Prem Kumar",
+               date:"08/05/2017",
+               time:"9:00 AM - 6:00 PM",
+               description:"A grand event with lot's of technical exposure for IT and CSE domain",
+               phone:"+919500245103",
+               department:"Computer Science and Engineerig"
+           },]
 
         }
     };
@@ -74580,7 +74821,348 @@ function examResultsView(){
     return {
         restrict:'E',
         templateUrl:'app/main-page/exam-results/exam-results.html',
-        controller:function(){
+        controller:function($scope){
+            $scope.examResults=[{
+                sem_no:1,
+                subjects:[{
+                    sem_no:1,
+                    subject_code:"UCS1201",
+                    subject_name:"Computer Architecture",
+                    grade:'B',
+                    grade_point:8,
+                    credit_point:3,
+                    status:"Fail"
+                },
+                {
+                    sem_no:1,
+                    subject_code:"UCS1201",
+                    subject_name:"Computer Architecture",
+                    grade:'B',
+                    grade_point:8,
+                    credit_point:3,
+                    status:"Pass"
+                },
+                {
+                    sem_no:1,
+                    subject_code:"UCS1201",
+                    subject_name:"Computer Architecture",
+                    grade:'B',
+                    grade_point:8,
+                    credit_point:3,
+                    status:"Pass"
+                },
+                {
+                    sem_no:1,
+                    subject_code:"UCS1201",
+                    subject_name:"Computer Architecture",
+                    grade:'B',
+                    grade_point:8,
+                    credit_point:3,
+                    status:"Pass"
+                },
+                {
+                    sem_no:1,
+                    subject_code:"UCS1201",
+                    subject_name:"Computer Architecture",
+                    grade:'B',
+                    grade_point:8,
+                    credit_point:3,
+                    status:"Pass"
+                },
+                {
+                    sem_no:1,
+                    subject_code:"UCS1201",
+                    subject_name:"Computer Architecture",
+                    grade:'B',
+                    grade_point:8,
+                    credit_point:3,
+                    status:"Pass"
+                }]
+            },
+            {
+                sem_no:2,
+                subjects:[{
+                    sem_no:2,
+                    subject_code:"UCS1201",
+                    subject_name:"Computer Architecture",
+                    grade:'B',
+                    grade_point:8,
+                    credit_point:3,
+                    status:"Pass"
+                },
+                {
+                    sem_no:2,
+                    subject_code:"UCS1201",
+                    subject_name:"Computer Architecture",
+                    grade:'B',
+                    grade_point:8,
+                    credit_point:3,
+                    status:"Pass"
+                },
+                {
+                    sem_no:2,
+                    subject_code:"UCS1201",
+                    subject_name:"Computer Architecture",
+                    grade:'B',
+                    grade_point:8,
+                    credit_point:3,
+                    status:"Pass"
+                },
+                {
+                    sem_no:2,
+                    subject_code:"UCS1201",
+                    subject_name:"Computer Architecture",
+                    grade:'B',
+                    grade_point:8,
+                    credit_point:3,
+                    status:"Pass"
+                },
+                {
+                    sem_no:2,
+                    subject_code:"UCS1201",
+                    subject_name:"Computer Architecture",
+                    grade:'B',
+                    grade_point:8,
+                    credit_point:3,
+                    status:"Pass"
+                },
+                {
+                    sem_no:2,
+                    subject_code:"UCS1201",
+                    subject_name:"Computer Architecture",
+                    grade:'B',
+                    grade_point:8,
+                    credit_point:3,
+                    status:"Pass"
+                }]
+            },
+            {
+                sem_no:3,
+                subjects:[{
+                    sem_no:3,
+                    subject_code:"UCS1201",
+                    subject_name:"Computer Architecture",
+                    grade:'B',
+                    grade_point:8,
+                    credit_point:3,
+                    status:"Pass"
+                },
+                {
+                    sem_no:3,
+                    subject_code:"UCS1201",
+                    subject_name:"Computer Architecture",
+                    grade:'B',
+                    grade_point:8,
+                    credit_point:3,
+                    status:"Pass"
+                },
+                {
+                    sem_no:3,
+                    subject_code:"UCS1201",
+                    subject_name:"Computer Architecture",
+                    grade:'B',
+                    grade_point:8,
+                    credit_point:3,
+                    status:"Pass"
+                },
+                {
+                    sem_no:3,
+                    subject_code:"UCS1201",
+                    subject_name:"Computer Architecture",
+                    grade:'B',
+                    grade_point:8,
+                    credit_point:3,
+                    status:"Pass"
+                },
+                {
+                    sem_no:3,
+                    subject_code:"UCS1201",
+                    subject_name:"Computer Architecture",
+                    grade:'B',
+                    grade_point:8,
+                    credit_point:3,
+                    status:"Pass"
+                },
+                {
+                    sem_no:3,
+                    subject_code:"UCS1201",
+                    subject_name:"Computer Architecture",
+                    grade:'B',
+                    grade_point:8,
+                    credit_point:3,
+                    status:"Pass"
+                }]
+            },
+            {
+                sem_no:4,
+                subjects:[{
+                    sem_no:4,
+                    subject_code:"UCS1201",
+                    subject_name:"Computer Architecture",
+                    grade:'B',
+                    grade_point:8,
+                    credit_point:3,
+                    status:"Pass"
+                },
+                {
+                    sem_no:4,
+                    subject_code:"UCS1201",
+                    subject_name:"Computer Architecture",
+                    grade:'B',
+                    grade_point:8,
+                    credit_point:3,
+                    status:"Pass"
+                },
+                {
+                    sem_no:4,
+                    subject_code:"UCS1201",
+                    subject_name:"Computer Architecture",
+                    grade:'B',
+                    grade_point:8,
+                    credit_point:3,
+                    status:"Pass"
+                },
+                {
+                    sem_no:4,
+                    subject_code:"UCS1201",
+                    subject_name:"Computer Architecture",
+                    grade:'B',
+                    grade_point:8,
+                    credit_point:3,
+                    status:"Pass"
+                },
+                {
+                    sem_no:4,
+                    subject_code:"UCS1201",
+                    subject_name:"Computer Architecture",
+                    grade:'B',
+                    grade_point:8,
+                    credit_point:3,
+                    status:"Pass"
+                },
+                {
+                    sem_no:4,
+                    subject_code:"UCS1201",
+                    subject_name:"Computer Architecture",
+                    grade:'B',
+                    grade_point:8,
+                    credit_point:3,
+                    status:"Pass"
+                }]
+            },
+            {
+                sem_no:5,
+                subjects:[{
+                    sem_no:5,
+                    subject_code:"UCS1201",
+                    subject_name:"Computer Architecture",
+                    grade:'B',
+                    grade_point:8,
+                    credit_point:3,
+                    status:"Pass"
+                },
+                {
+                    sem_no:5,
+                    subject_code:"UCS1201",
+                    subject_name:"Computer Architecture",
+                    grade:'B',
+                    grade_point:8,
+                    credit_point:3,
+                    status:"Pass"
+                },
+                {
+                    sem_no:5,
+                    subject_code:"UCS1201",
+                    subject_name:"Computer Architecture",
+                    grade:'B',
+                    grade_point:8,
+                    credit_point:3,
+                    status:"Pass"
+                },
+                {
+                    sem_no:5,
+                    subject_code:"UCS1201",
+                    subject_name:"Computer Architecture",
+                    grade:'B',
+                    grade_point:8,
+                    credit_point:3,
+                    status:"Pass"
+                },
+                {
+                    sem_no:5,
+                    subject_code:"UCS1201",
+                    subject_name:"Computer Architecture",
+                    grade:'B',
+                    grade_point:8,
+                    credit_point:3,
+                    status:"Pass"
+                },
+                {
+                    sem_no:5,
+                    subject_code:"UCS1201",
+                    subject_name:"Computer Architecture",
+                    grade:'B',
+                    grade_point:8,
+                    credit_point:3,
+                    status:"Pass"
+                }]
+            },{
+                sem_no:6,
+                subjects:[{
+                    sem_no:6,
+                    subject_code:"UCS1201",
+                    subject_name:"Computer Architecture",
+                    grade:'B',
+                    grade_point:8,
+                    credit_point:3,
+                    status:"Pass"
+                },
+                {
+                    sem_no:6,
+                    subject_code:"UCS1201",
+                    subject_name:"Computer Architecture",
+                    grade:'B',
+                    grade_point:8,
+                    credit_point:3,
+                    status:"Pass"
+                },
+                {
+                    sem_no:6,
+                    subject_code:"UCS1201",
+                    subject_name:"Computer Architecture",
+                    grade:'B',
+                    grade_point:8,
+                    credit_point:3,
+                    status:"Pass"
+                },
+                {
+                    sem_no:6,
+                    subject_code:"UCS1201",
+                    subject_name:"Computer Architecture",
+                    grade:'B',
+                    grade_point:8,
+                    credit_point:3,
+                    status:"Pass"
+                },
+                {
+                    sem_no:6,
+                    subject_code:"UCS1201",
+                    subject_name:"Computer Architecture",
+                    grade:'B',
+                    grade_point:8,
+                    credit_point:3,
+                    status:"Pass"
+                },
+                {
+                    sem_no:6,
+                    subject_code:"UCS1201",
+                    subject_name:"Computer Architecture",
+                    grade:'B',
+                    grade_point:8,
+                    credit_point:3,
+                    status:"Pass"
+                }]
+            }]
 
         }
     };
@@ -74602,35 +75184,243 @@ function feesDetailsView(){
     return {
         restrict:'E',
         templateUrl:'app/main-page/fees-details/fees-details.html',
-        controller:function(){
+        controller:function($scope){
+            $scope.fees = [{
+                name:"Tution Fees",
+                apply_date:"07/08/2017",
+                due_date:"08/05/2018",
+                fee_amt:50000,
+                paid_amt:20000,
+                balance_amt:30000
+            },
+            {
+                name:"Tution Fees",
+                apply_date:"07/08/2017",
+                due_date:"08/05/2018",
+                fee_amt:50000,
+                paid_amt:20000,
+                balance_amt:30000
+            },
+            {
+                name:"Tution Fees",
+                apply_date:"07/08/2017",
+                due_date:"08/05/2018",
+                fee_amt:50000,
+                paid_amt:20000,
+                balance_amt:30000
+            },
+            {
+                name:"Tution Fees",
+                apply_date:"07/08/2017",
+                due_date:"08/05/2018",
+                fee_amt:50000,
+                paid_amt:20000,
+                balance_amt:30000
+            },
+            {
+                name:"Tution Fees",
+                apply_date:"07/08/2017",
+                due_date:"08/05/2018",
+                fee_amt:50000,
+                paid_amt:20000,
+                balance_amt:30000
+            },
+            {
+                name:"Tution Fees",
+                apply_date:"07/08/2017",
+                due_date:"08/05/2018",
+                fee_amt:50000,
+                paid_amt:20000,
+                balance_amt:30000
+            },
+            {
+                name:"Tution Fees",
+                apply_date:"07/08/2017",
+                due_date:"08/05/2018",
+                fee_amt:50000,
+                paid_amt:20000,
+                balance_amt:30000
+            },
+            {
+                name:"Tution Fees",
+                apply_date:"07/08/2017",
+                due_date:"08/05/2018",
+                fee_amt:50000,
+                paid_amt:20000,
+                balance_amt:30000
+            },
+            {
+                name:"Tution Fees",
+                apply_date:"07/08/2017",
+                due_date:"08/05/2018",
+                fee_amt:50000,
+                paid_amt:20000,
+                balance_amt:30000
+            },
+            {
+                name:"Tution Fees",
+                apply_date:"07/08/2017",
+                due_date:"08/05/2018",
+                fee_amt:50000,
+                paid_amt:20000,
+                balance_amt:30000
+            },
+            {
+                name:"Tution Fees",
+                apply_date:"07/08/2017",
+                due_date:"08/05/2018",
+                fee_amt:50000,
+                paid_amt:20000,
+                balance_amt:30000
+            },
+            {
+                name:"Tution Fees",
+                apply_date:"07/08/2017",
+                due_date:"08/05/2018",
+                fee_amt:50000,
+                paid_amt:20000,
+                balance_amt:30000
+            },
+            {
+                name:"Tution Fees",
+                apply_date:"07/08/2017",
+                due_date:"08/05/2018",
+                fee_amt:50000,
+                paid_amt:20000,
+                balance_amt:30000
+            },
+            {
+                name:"Tution Fees",
+                apply_date:"07/08/2017",
+                due_date:"08/05/2018",
+                fee_amt:50000,
+                paid_amt:20000,
+                balance_amt:30000
+            }]
 
         }
     };
 }
 module.exports= feesDetailsView;
 },{}],21:[function(require,module,exports){
-function greetingsView(){
-    return {
-        restrict:'E',
-        templateUrl:'app/main-page/greetings/greetings.html',
-        controller:function(){
-
-        }
-    };
-}
-module.exports= greetingsView;
-},{}],22:[function(require,module,exports){
 function libraryStatusView(){
     return {
         restrict:'E',
         templateUrl:'app/main-page/library-status/library-status.html',
-        controller:function(){
+        controller:function($scope){
+             $scope.libraryDetails = [{
+                 bookName:"Computer Networking",
+                 bookId:"CS127",
+                 issuedDate:"07/08/2017",
+                 renewalDate:"22/08/2017",
+                 returnDate:"06/09/2017",
+                 fineAmt:40,
+                 status:"ISSUED"
+             },
+             {
+                 bookName:"Computer Networking",
+                 bookId:"CS127",
+                 issuedDate:"07/08/2017",
+                 renewalDate:"22/08/2017",
+                 returnDate:"06/09/2017",
+                 fineAmt:40,
+                 status:"ISSUED"
+             },
+             {
+                 bookName:"Computer Networking",
+                 bookId:"CS127",
+                 issuedDate:"07/08/2017",
+                 renewalDate:"22/08/2017",
+                 returnDate:"06/09/2017",
+                 fineAmt:40,
+                 status:"ISSUED"
+             },{
+                 bookName:"Computer Networking",
+                 bookId:"CS127",
+                 issuedDate:"07/08/2017",
+                 renewalDate:"22/08/2017",
+                 returnDate:"06/09/2017",
+                 fineAmt:40,
+                 status:"ISSUED"
+             },{
+                 bookName:"Computer Networking",
+                 bookId:"CS127",
+                 issuedDate:"07/08/2017",
+                 renewalDate:"22/08/2017",
+                 returnDate:"06/09/2017",
+                 fineAmt:40,
+                 status:"ISSUED"
+             },{
+                 bookName:"Computer Networking",
+                 bookId:"CS127",
+                 issuedDate:"07/08/2017",
+                 renewalDate:"22/08/2017",
+                 returnDate:"06/09/2017",
+                 fineAmt:40,
+                 status:"ISSUED"
+             },{
+                 bookName:"Computer Networking",
+                 bookId:"CS127",
+                 issuedDate:"07/08/2017",
+                 renewalDate:"22/08/2017",
+                 returnDate:"06/09/2017",
+                 fineAmt:40,
+                 status:"ISSUED"
+             },{
+                 bookName:"Computer Networking",
+                 bookId:"CS127",
+                 issuedDate:"07/08/2017",
+                 renewalDate:"22/08/2017",
+                 returnDate:"06/09/2017",
+                 fineAmt:40,
+                 status:"ISSUED"
+             },{
+                 bookName:"Computer Networking",
+                 bookId:"CS127",
+                 issuedDate:"07/08/2017",
+                 renewalDate:"22/08/2017",
+                 returnDate:"06/09/2017",
+                 fineAmt:40,
+                 status:"ISSUED"
+             },{
+                 bookName:"Computer Networking",
+                 bookId:"CS127",
+                 issuedDate:"07/08/2017",
+                 renewalDate:"22/08/2017",
+                 returnDate:"06/09/2017",
+                 fineAmt:40,
+                 status:"ISSUED"
+             },{
+                 bookName:"Computer Networking",
+                 bookId:"CS127",
+                 issuedDate:"07/08/2017",
+                 renewalDate:"22/08/2017",
+                 returnDate:"06/09/2017",
+                 fineAmt:40,
+                 status:"ISSUED"
+             },{
+                 bookName:"Computer Networking",
+                 bookId:"CS127",
+                 issuedDate:"07/08/2017",
+                 renewalDate:"22/08/2017",
+                 returnDate:"06/09/2017",
+                 fineAmt:40,
+                 status:"ISSUED"
+             },{
+                 bookName:"Computer Networking",
+                 bookId:"CS127",
+                 issuedDate:"07/08/2017",
+                 renewalDate:"22/08/2017",
+                 returnDate:"06/09/2017",
+                 fineAmt:40,
+                 status:"ISSUED"
+             }]   
 
         }
     };
 }
 module.exports= libraryStatusView;
-},{}],23:[function(require,module,exports){
+},{}],22:[function(require,module,exports){
 'use strict';
 
 function mainPageCtrl($scope,$mdToast, $mdSidenav,$timeout,$mdPanel){
@@ -74648,13 +75438,13 @@ function mainPageCtrl($scope,$mdToast, $mdSidenav,$timeout,$mdPanel){
     $scope.links=['Dashboard','Profile',
     'Acadamic Planner','Attendance',
     'Mark Detail','Fees Detail','Library Status',
-    'Exam Results','Feedback','Events','Greetings','Circular']
+    'Exam Results','Feedback','Events','Circular']
 
-    
-    $scope.selected="Dashboard"
-    $scope.toggle=function(){
-        $scope.navshow=!$scope.navshow
+    $scope.close = function () {
+      $mdSidenav('left').close()
     }
+    $scope.selected="Dashboard"
+    
     $scope.toggleLeft = buildDelayedToggler('left');
     function debounce(func, wait, context) {
       var timer;
@@ -74678,7 +75468,7 @@ function mainPageCtrl($scope,$mdToast, $mdSidenav,$timeout,$mdPanel){
     
 }
 module.exports = mainPageCtrl;
-},{}],24:[function(require,module,exports){
+},{}],23:[function(require,module,exports){
 "use strict";
 require('angular-material');
 var acadamicPlannerView = require('./acadamic-planner/acadamic-planner.js'); 
@@ -74689,13 +75479,12 @@ var eventsView = require('./events/events.js');
 var examResultsView = require('./exam-results/exam-results.js');
 var feedbackView = require('./feedback/feedback.js');
 var feesDetailsView = require('./fees-details/fees-details.js');
-var greetingsView = require('./greetings/greetings.js');
 var libraryStatusView = require('./library-status/library-status.js');
 var markDetailView = require('./mark-details/mark-details.js');
 var profileView = require('./profile/profile.js');
 
 var mainPageCtrl = require('./main-page-controller.js');
-var mainPageModule = angular.module('myApp.mainPage',['ngRoute','ngMaterial']);
+var mainPageModule = angular.module('myApp.mainPage',['ngRoute','ngMaterial','nvd3']);
 mainPageModule.controller('mainPageCtrl',mainPageCtrl);
 mainPageModule.directive('acadamicPlannerView',acadamicPlannerView);
 mainPageModule.directive('attendanceView',attendanceView);
@@ -74705,24 +75494,1398 @@ mainPageModule.directive('eventsView',eventsView);
 mainPageModule.directive('examResultsView',examResultsView);
 mainPageModule.directive('feedbackView',feedbackView);
 mainPageModule.directive('feesDetailsView',feesDetailsView);
-mainPageModule.directive('greetingsView',greetingsView);
 mainPageModule.directive('libraryStatusView',libraryStatusView);
 mainPageModule.directive('markDetailView',markDetailView);
 mainPageModule.directive('profileView',profileView);
 
 
-},{"./acadamic-planner/acadamic-planner.js":13,"./attendance/attendance.js":14,"./circular/circular.js":15,"./dashboard/dashboard.js":16,"./events/events.js":17,"./exam-results/exam-results.js":18,"./feedback/feedback.js":19,"./fees-details/fees-details.js":20,"./greetings/greetings.js":21,"./library-status/library-status.js":22,"./main-page-controller.js":23,"./mark-details/mark-details.js":25,"./profile/profile.js":26,"angular-material":6}],25:[function(require,module,exports){
+},{"./acadamic-planner/acadamic-planner.js":13,"./attendance/attendance.js":14,"./circular/circular.js":15,"./dashboard/dashboard.js":16,"./events/events.js":17,"./exam-results/exam-results.js":18,"./feedback/feedback.js":19,"./fees-details/fees-details.js":20,"./library-status/library-status.js":21,"./main-page-controller.js":22,"./mark-details/mark-details.js":24,"./profile/profile.js":25,"angular-material":6}],24:[function(require,module,exports){
 function markDetailView(){
     return {
         restrict:'E',
         templateUrl:'app/main-page/mark-details/mark-details.html',
-        controller:function(){
+        controller:function($scope){
+            $scope.markDetails = [{
+                sem_no:1,
+                exam:[{
+                    name:"UNIT TEST 1",
+                    subjects:[{
+                        subject_code:"UCS1201",
+                        subject_name:"Data structures",
+                        min_mark:50,
+                        max_mark:100,
+                        obtained_mark:10,
+                        first_mark:90,
+                        status:"Pass"
+                    },
+                    {
+                        subject_code:"UCS1201",
+                        subject_name:"Data structures",
+                        min_mark:50,
+                        max_mark:100,
+                        obtained_mark:80,
+                        first_mark:90,
+                        status:"Pass"
+                    },
+                    {
+                        subject_code:"UCS1201",
+                        subject_name:"Data structures",
+                        min_mark:50,
+                        max_mark:100,
+                        obtained_mark:80,
+                        first_mark:90,
+                        status:"Pass"
+                    },
+                    {
+                        subject_code:"UCS1201",
+                        subject_name:"Data structures",
+                        min_mark:50,
+                        max_mark:100,
+                        obtained_mark:80,
+                        first_mark:90,
+                        status:"Pass"
+                    },
+                    {
+                        subject_code:"UCS1201",
+                        subject_name:"Data structures",
+                        min_mark:50,
+                        max_mark:100,
+                        obtained_mark:80,
+                        first_mark:90,
+                        status:"Pass"
+                    },
+                    {
+                        subject_code:"UCS1201",
+                        subject_name:"Data structures",
+                        min_mark:50,
+                        max_mark:100,
+                        obtained_mark:80,
+                        first_mark:90,
+                        status:"Pass"
+                    }]
+                },
+                {
+                    name:"MID SEMESTER",
+                    subjects:[{
+                        subject_code:"UCS1201",
+                        subject_name:"Data structures",
+                        min_mark:50,
+                        max_mark:100,
+                        obtained_mark:80,
+                        first_mark:90,
+                        status:"Pass"
+                    },
+                    {
+                        subject_code:"UCS1201",
+                        subject_name:"Data structures",
+                        min_mark:50,
+                        max_mark:100,
+                        obtained_mark:80,
+                        first_mark:90,
+                        status:"Pass"
+                    },
+                    {
+                        subject_code:"UCS1201",
+                        subject_name:"Data structures",
+                        min_mark:50,
+                        max_mark:100,
+                        obtained_mark:80,
+                        first_mark:90,
+                        status:"Pass"
+                    },
+                    {
+                        subject_code:"UCS1201",
+                        subject_name:"Data structures",
+                        min_mark:50,
+                        max_mark:100,
+                        obtained_mark:80,
+                        first_mark:90,
+                        status:"Pass"
+                    },
+                    {
+                        subject_code:"UCS1201",
+                        subject_name:"Data structures",
+                        min_mark:50,
+                        max_mark:100,
+                        obtained_mark:80,
+                        first_mark:90,
+                        status:"Pass"
+                    },
+                    {
+                        subject_code:"UCS1201",
+                        subject_name:"Data structures",
+                        min_mark:50,
+                        max_mark:100,
+                        obtained_mark:80,
+                        first_mark:90,
+                        status:"Pass"
+                    }]
+                },{
+                    name:"UNIT TEST 2",
+                    subjects:[{
+                        subject_code:"UCS1201",
+                        subject_name:"Data structures",
+                        min_mark:50,
+                        max_mark:100,
+                        obtained_mark:80,
+                        first_mark:90,
+                        status:"Pass"
+                    },
+                    {
+                        subject_code:"UCS1201",
+                        subject_name:"Data structures",
+                        min_mark:50,
+                        max_mark:100,
+                        obtained_mark:80,
+                        first_mark:90,
+                        status:"Pass"
+                    },
+                    {
+                        subject_code:"UCS1201",
+                        subject_name:"Data structures",
+                        min_mark:50,
+                        max_mark:100,
+                        obtained_mark:80,
+                        first_mark:90,
+                        status:"Pass"
+                    },
+                    {
+                        subject_code:"UCS1201",
+                        subject_name:"Data structures",
+                        min_mark:50,
+                        max_mark:100,
+                        obtained_mark:80,
+                        first_mark:90,
+                        status:"Pass"
+                    },
+                    {
+                        subject_code:"UCS1201",
+                        subject_name:"Data structures",
+                        min_mark:50,
+                        max_mark:100,
+                        obtained_mark:80,
+                        first_mark:90,
+                        status:"Pass"
+                    },
+                    {
+                        subject_code:"UCS1201",
+                        subject_name:"Data structures",
+                        min_mark:50,
+                        max_mark:100,
+                        obtained_mark:80,
+                        first_mark:90,
+                        status:"Pass"
+                    }]
+                },{
+                    name:"PREPARATORY EXAM",
+                    subjects:[{
+                        subject_code:"UCS1201",
+                        subject_name:"Data structures",
+                        min_mark:50,
+                        max_mark:100,
+                        obtained_mark:80,
+                        first_mark:90,
+                        status:"Pass"
+                    },
+                    {
+                        subject_code:"UCS1201",
+                        subject_name:"Data structures",
+                        min_mark:50,
+                        max_mark:100,
+                        obtained_mark:80,
+                        first_mark:90,
+                        status:"Pass"
+                    },
+                    {
+                        subject_code:"UCS1201",
+                        subject_name:"Data structures",
+                        min_mark:50,
+                        max_mark:100,
+                        obtained_mark:80,
+                        first_mark:90,
+                        status:"Pass"
+                    },
+                    {
+                        subject_code:"UCS1201",
+                        subject_name:"Data structures",
+                        min_mark:50,
+                        max_mark:100,
+                        obtained_mark:80,
+                        first_mark:90,
+                        status:"Pass"
+                    },
+                    {
+                        subject_code:"UCS1201",
+                        subject_name:"Data structures",
+                        min_mark:50,
+                        max_mark:100,
+                        obtained_mark:80,
+                        first_mark:90,
+                        status:"Pass"
+                    },
+                    {
+                        subject_code:"UCS1201",
+                        subject_name:"Data structures",
+                        min_mark:50,
+                        max_mark:100,
+                        obtained_mark:80,
+                        first_mark:90,
+                        status:"Pass"
+                    }]
+                }]
+
+            },{
+                sem_no:2,
+                exam:[{
+                    name:"UNIT TEST 1",
+                    subjects:[{
+                        subject_code:"UCS1201",
+                        subject_name:"Data structures",
+                        min_mark:50,
+                        max_mark:100,
+                        obtained_mark:80,
+                        first_mark:90,
+                        status:"Pass"
+                    },
+                    {
+                        subject_code:"UCS1201",
+                        subject_name:"Data structures",
+                        min_mark:50,
+                        max_mark:100,
+                        obtained_mark:80,
+                        first_mark:90,
+                        status:"Pass"
+                    },
+                    {
+                        subject_code:"UCS1201",
+                        subject_name:"Data structures",
+                        min_mark:50,
+                        max_mark:100,
+                        obtained_mark:80,
+                        first_mark:90,
+                        status:"Pass"
+                    },
+                    {
+                        subject_code:"UCS1201",
+                        subject_name:"Data structures",
+                        min_mark:50,
+                        max_mark:100,
+                        obtained_mark:80,
+                        first_mark:90,
+                        status:"Pass"
+                    },
+                    {
+                        subject_code:"UCS1201",
+                        subject_name:"Data structures",
+                        min_mark:50,
+                        max_mark:100,
+                        obtained_mark:80,
+                        first_mark:90,
+                        status:"Pass"
+                    },
+                    {
+                        subject_code:"UCS1201",
+                        subject_name:"Data structures",
+                        min_mark:50,
+                        max_mark:100,
+                        obtained_mark:80,
+                        first_mark:90,
+                        status:"Pass"
+                    }]
+                },
+                {
+                    name:"MID SEMESTER",
+                    subjects:[{
+                        subject_code:"UCS1201",
+                        subject_name:"Data structures",
+                        min_mark:50,
+                        max_mark:100,
+                        obtained_mark:80,
+                        first_mark:90,
+                        status:"Pass"
+                    },
+                    {
+                        subject_code:"UCS1201",
+                        subject_name:"Data structures",
+                        min_mark:50,
+                        max_mark:100,
+                        obtained_mark:80,
+                        first_mark:90,
+                        status:"Pass"
+                    },
+                    {
+                        subject_code:"UCS1201",
+                        subject_name:"Data structures",
+                        min_mark:50,
+                        max_mark:100,
+                        obtained_mark:80,
+                        first_mark:90,
+                        status:"Pass"
+                    },
+                    {
+                        subject_code:"UCS1201",
+                        subject_name:"Data structures",
+                        min_mark:50,
+                        max_mark:100,
+                        obtained_mark:80,
+                        first_mark:90,
+                        status:"Pass"
+                    },
+                    {
+                        subject_code:"UCS1201",
+                        subject_name:"Data structures",
+                        min_mark:50,
+                        max_mark:100,
+                        obtained_mark:80,
+                        first_mark:90,
+                        status:"Pass"
+                    },
+                    {
+                        subject_code:"UCS1201",
+                        subject_name:"Data structures",
+                        min_mark:50,
+                        max_mark:100,
+                        obtained_mark:80,
+                        first_mark:90,
+                        status:"Pass"
+                    }]
+                },{
+                    name:"UNIT TEST 2",
+                    subjects:[{
+                        subject_code:"UCS1201",
+                        subject_name:"Data structures",
+                        min_mark:50,
+                        max_mark:100,
+                        obtained_mark:80,
+                        first_mark:90,
+                        status:"Pass"
+                    },
+                    {
+                        subject_code:"UCS1201",
+                        subject_name:"Data structures",
+                        min_mark:50,
+                        max_mark:100,
+                        obtained_mark:80,
+                        first_mark:90,
+                        status:"Pass"
+                    },
+                    {
+                        subject_code:"UCS1201",
+                        subject_name:"Data structures",
+                        min_mark:50,
+                        max_mark:100,
+                        obtained_mark:80,
+                        first_mark:90,
+                        status:"Pass"
+                    },
+                    {
+                        subject_code:"UCS1201",
+                        subject_name:"Data structures",
+                        min_mark:50,
+                        max_mark:100,
+                        obtained_mark:80,
+                        first_mark:90,
+                        status:"Pass"
+                    },
+                    {
+                        subject_code:"UCS1201",
+                        subject_name:"Data structures",
+                        min_mark:50,
+                        max_mark:100,
+                        obtained_mark:80,
+                        first_mark:90,
+                        status:"Pass"
+                    },
+                    {
+                        subject_code:"UCS1201",
+                        subject_name:"Data structures",
+                        min_mark:50,
+                        max_mark:100,
+                        obtained_mark:80,
+                        first_mark:90,
+                        status:"Pass"
+                    }]
+                },{
+                    name:"PREPARATORY EXAM",
+                    subjects:[{
+                        subject_code:"UCS1201",
+                        subject_name:"Data structures",
+                        min_mark:50,
+                        max_mark:100,
+                        obtained_mark:80,
+                        first_mark:90,
+                        status:"Pass"
+                    },
+                    {
+                        subject_code:"UCS1201",
+                        subject_name:"Data structures",
+                        min_mark:50,
+                        max_mark:100,
+                        obtained_mark:80,
+                        first_mark:90,
+                        status:"Pass"
+                    },
+                    {
+                        subject_code:"UCS1201",
+                        subject_name:"Data structures",
+                        min_mark:50,
+                        max_mark:100,
+                        obtained_mark:80,
+                        first_mark:90,
+                        status:"Pass"
+                    },
+                    {
+                        subject_code:"UCS1201",
+                        subject_name:"Data structures",
+                        min_mark:50,
+                        max_mark:100,
+                        obtained_mark:80,
+                        first_mark:90,
+                        status:"Pass"
+                    },
+                    {
+                        subject_code:"UCS1201",
+                        subject_name:"Data structures",
+                        min_mark:50,
+                        max_mark:100,
+                        obtained_mark:80,
+                        first_mark:90,
+                        status:"Pass"
+                    },
+                    {
+                        subject_code:"UCS1201",
+                        subject_name:"Data structures",
+                        min_mark:50,
+                        max_mark:100,
+                        obtained_mark:80,
+                        first_mark:90,
+                        status:"Pass"
+                    }]
+                }]
+
+            },{
+                sem_no:3,
+                exam:[{
+                    name:"UNIT TEST 1",
+                    subjects:[{
+                        subject_code:"UCS1201",
+                        subject_name:"Data structures",
+                        min_mark:50,
+                        max_mark:100,
+                        obtained_mark:80,
+                        first_mark:90,
+                        status:"Pass"
+                    },
+                    {
+                        subject_code:"UCS1201",
+                        subject_name:"Data structures",
+                        min_mark:50,
+                        max_mark:100,
+                        obtained_mark:80,
+                        first_mark:90,
+                        status:"Pass"
+                    },
+                    {
+                        subject_code:"UCS1201",
+                        subject_name:"Data structures",
+                        min_mark:50,
+                        max_mark:100,
+                        obtained_mark:80,
+                        first_mark:90,
+                        status:"Pass"
+                    },
+                    {
+                        subject_code:"UCS1201",
+                        subject_name:"Data structures",
+                        min_mark:50,
+                        max_mark:100,
+                        obtained_mark:80,
+                        first_mark:90,
+                        status:"Pass"
+                    },
+                    {
+                        subject_code:"UCS1201",
+                        subject_name:"Data structures",
+                        min_mark:50,
+                        max_mark:100,
+                        obtained_mark:80,
+                        first_mark:90,
+                        status:"Pass"
+                    },
+                    {
+                        subject_code:"UCS1201",
+                        subject_name:"Data structures",
+                        min_mark:50,
+                        max_mark:100,
+                        obtained_mark:80,
+                        first_mark:90,
+                        status:"Pass"
+                    }]
+                },
+                {
+                    name:"MID SEMESTER",
+                    subjects:[{
+                        subject_code:"UCS1201",
+                        subject_name:"Data structures",
+                        min_mark:50,
+                        max_mark:100,
+                        obtained_mark:80,
+                        first_mark:90,
+                        status:"Pass"
+                    },
+                    {
+                        subject_code:"UCS1201",
+                        subject_name:"Data structures",
+                        min_mark:50,
+                        max_mark:100,
+                        obtained_mark:80,
+                        first_mark:90,
+                        status:"Pass"
+                    },
+                    {
+                        subject_code:"UCS1201",
+                        subject_name:"Data structures",
+                        min_mark:50,
+                        max_mark:100,
+                        obtained_mark:80,
+                        first_mark:90,
+                        status:"Pass"
+                    },
+                    {
+                        subject_code:"UCS1201",
+                        subject_name:"Data structures",
+                        min_mark:50,
+                        max_mark:100,
+                        obtained_mark:80,
+                        first_mark:90,
+                        status:"Pass"
+                    },
+                    {
+                        subject_code:"UCS1201",
+                        subject_name:"Data structures",
+                        min_mark:50,
+                        max_mark:100,
+                        obtained_mark:80,
+                        first_mark:90,
+                        status:"Pass"
+                    },
+                    {
+                        subject_code:"UCS1201",
+                        subject_name:"Data structures",
+                        min_mark:50,
+                        max_mark:100,
+                        obtained_mark:80,
+                        first_mark:90,
+                        status:"Pass"
+                    }]
+                },{
+                    name:"UNIT TEST 2",
+                    subjects:[{
+                        subject_code:"UCS1201",
+                        subject_name:"Data structures",
+                        min_mark:50,
+                        max_mark:100,
+                        obtained_mark:80,
+                        first_mark:90,
+                        status:"Pass"
+                    },
+                    {
+                        subject_code:"UCS1201",
+                        subject_name:"Data structures",
+                        min_mark:50,
+                        max_mark:100,
+                        obtained_mark:80,
+                        first_mark:90,
+                        status:"Pass"
+                    },
+                    {
+                        subject_code:"UCS1201",
+                        subject_name:"Data structures",
+                        min_mark:50,
+                        max_mark:100,
+                        obtained_mark:80,
+                        first_mark:90,
+                        status:"Pass"
+                    },
+                    {
+                        subject_code:"UCS1201",
+                        subject_name:"Data structures",
+                        min_mark:50,
+                        max_mark:100,
+                        obtained_mark:80,
+                        first_mark:90,
+                        status:"Pass"
+                    },
+                    {
+                        subject_code:"UCS1201",
+                        subject_name:"Data structures",
+                        min_mark:50,
+                        max_mark:100,
+                        obtained_mark:80,
+                        first_mark:90,
+                        status:"Pass"
+                    },
+                    {
+                        subject_code:"UCS1201",
+                        subject_name:"Data structures",
+                        min_mark:50,
+                        max_mark:100,
+                        obtained_mark:80,
+                        first_mark:90,
+                        status:"Pass"
+                    }]
+                },{
+                    name:"PREPARATORY EXAM",
+                    subjects:[{
+                        subject_code:"UCS1201",
+                        subject_name:"Data structures",
+                        min_mark:50,
+                        max_mark:100,
+                        obtained_mark:80,
+                        first_mark:90,
+                        status:"Pass"
+                    },
+                    {
+                        subject_code:"UCS1201",
+                        subject_name:"Data structures",
+                        min_mark:50,
+                        max_mark:100,
+                        obtained_mark:80,
+                        first_mark:90,
+                        status:"Pass"
+                    },
+                    {
+                        subject_code:"UCS1201",
+                        subject_name:"Data structures",
+                        min_mark:50,
+                        max_mark:100,
+                        obtained_mark:80,
+                        first_mark:90,
+                        status:"Pass"
+                    },
+                    {
+                        subject_code:"UCS1201",
+                        subject_name:"Data structures",
+                        min_mark:50,
+                        max_mark:100,
+                        obtained_mark:80,
+                        first_mark:90,
+                        status:"Pass"
+                    },
+                    {
+                        subject_code:"UCS1201",
+                        subject_name:"Data structures",
+                        min_mark:50,
+                        max_mark:100,
+                        obtained_mark:80,
+                        first_mark:90,
+                        status:"Pass"
+                    },
+                    {
+                        subject_code:"UCS1201",
+                        subject_name:"Data structures",
+                        min_mark:50,
+                        max_mark:100,
+                        obtained_mark:80,
+                        first_mark:90,
+                        status:"Pass"
+                    }]
+                }]
+
+            },{
+                sem_no:4,
+                exam:[{
+                    name:"UNIT TEST 1",
+                    subjects:[{
+                        subject_code:"UCS1201",
+                        subject_name:"Data structures",
+                        min_mark:50,
+                        max_mark:100,
+                        obtained_mark:80,
+                        first_mark:90,
+                        status:"Pass"
+                    },
+                    {
+                        subject_code:"UCS1201",
+                        subject_name:"Data structures",
+                        min_mark:50,
+                        max_mark:100,
+                        obtained_mark:80,
+                        first_mark:90,
+                        status:"Pass"
+                    },
+                    {
+                        subject_code:"UCS1201",
+                        subject_name:"Data structures",
+                        min_mark:50,
+                        max_mark:100,
+                        obtained_mark:80,
+                        first_mark:90,
+                        status:"Pass"
+                    },
+                    {
+                        subject_code:"UCS1201",
+                        subject_name:"Data structures",
+                        min_mark:50,
+                        max_mark:100,
+                        obtained_mark:80,
+                        first_mark:90,
+                        status:"Pass"
+                    },
+                    {
+                        subject_code:"UCS1201",
+                        subject_name:"Data structures",
+                        min_mark:50,
+                        max_mark:100,
+                        obtained_mark:80,
+                        first_mark:90,
+                        status:"Pass"
+                    },
+                    {
+                        subject_code:"UCS1201",
+                        subject_name:"Data structures",
+                        min_mark:50,
+                        max_mark:100,
+                        obtained_mark:80,
+                        first_mark:90,
+                        status:"Pass"
+                    }]
+                },
+                {
+                    name:"MID SEMESTER",
+                    subjects:[{
+                        subject_code:"UCS1201",
+                        subject_name:"Data structures",
+                        min_mark:50,
+                        max_mark:100,
+                        obtained_mark:80,
+                        first_mark:90,
+                        status:"Pass"
+                    },
+                    {
+                        subject_code:"UCS1201",
+                        subject_name:"Data structures",
+                        min_mark:50,
+                        max_mark:100,
+                        obtained_mark:80,
+                        first_mark:90,
+                        status:"Pass"
+                    },
+                    {
+                        subject_code:"UCS1201",
+                        subject_name:"Data structures",
+                        min_mark:50,
+                        max_mark:100,
+                        obtained_mark:80,
+                        first_mark:90,
+                        status:"Pass"
+                    },
+                    {
+                        subject_code:"UCS1201",
+                        subject_name:"Data structures",
+                        min_mark:50,
+                        max_mark:100,
+                        obtained_mark:80,
+                        first_mark:90,
+                        status:"Pass"
+                    },
+                    {
+                        subject_code:"UCS1201",
+                        subject_name:"Data structures",
+                        min_mark:50,
+                        max_mark:100,
+                        obtained_mark:80,
+                        first_mark:90,
+                        status:"Pass"
+                    },
+                    {
+                        subject_code:"UCS1201",
+                        subject_name:"Data structures",
+                        min_mark:50,
+                        max_mark:100,
+                        obtained_mark:80,
+                        first_mark:90,
+                        status:"Pass"
+                    }]
+                },{
+                    name:"UNIT TEST 2",
+                    subjects:[{
+                        subject_code:"UCS1201",
+                        subject_name:"Data structures",
+                        min_mark:50,
+                        max_mark:100,
+                        obtained_mark:80,
+                        first_mark:90,
+                        status:"Pass"
+                    },
+                    {
+                        subject_code:"UCS1201",
+                        subject_name:"Data structures",
+                        min_mark:50,
+                        max_mark:100,
+                        obtained_mark:80,
+                        first_mark:90,
+                        status:"Pass"
+                    },
+                    {
+                        subject_code:"UCS1201",
+                        subject_name:"Data structures",
+                        min_mark:50,
+                        max_mark:100,
+                        obtained_mark:80,
+                        first_mark:90,
+                        status:"Pass"
+                    },
+                    {
+                        subject_code:"UCS1201",
+                        subject_name:"Data structures",
+                        min_mark:50,
+                        max_mark:100,
+                        obtained_mark:80,
+                        first_mark:90,
+                        status:"Pass"
+                    },
+                    {
+                        subject_code:"UCS1201",
+                        subject_name:"Data structures",
+                        min_mark:50,
+                        max_mark:100,
+                        obtained_mark:80,
+                        first_mark:90,
+                        status:"Pass"
+                    },
+                    {
+                        subject_code:"UCS1201",
+                        subject_name:"Data structures",
+                        min_mark:50,
+                        max_mark:100,
+                        obtained_mark:80,
+                        first_mark:90,
+                        status:"Pass"
+                    }]
+                },{
+                    name:"PREPARATORY EXAM",
+                    subjects:[{
+                        subject_code:"UCS1201",
+                        subject_name:"Data structures",
+                        min_mark:50,
+                        max_mark:100,
+                        obtained_mark:80,
+                        first_mark:90,
+                        status:"Pass"
+                    },
+                    {
+                        subject_code:"UCS1201",
+                        subject_name:"Data structures",
+                        min_mark:50,
+                        max_mark:100,
+                        obtained_mark:80,
+                        first_mark:90,
+                        status:"Pass"
+                    },
+                    {
+                        subject_code:"UCS1201",
+                        subject_name:"Data structures",
+                        min_mark:50,
+                        max_mark:100,
+                        obtained_mark:80,
+                        first_mark:90,
+                        status:"Pass"
+                    },
+                    {
+                        subject_code:"UCS1201",
+                        subject_name:"Data structures",
+                        min_mark:50,
+                        max_mark:100,
+                        obtained_mark:80,
+                        first_mark:90,
+                        status:"Pass"
+                    },
+                    {
+                        subject_code:"UCS1201",
+                        subject_name:"Data structures",
+                        min_mark:50,
+                        max_mark:100,
+                        obtained_mark:80,
+                        first_mark:90,
+                        status:"Pass"
+                    },
+                    {
+                        subject_code:"UCS1201",
+                        subject_name:"Data structures",
+                        min_mark:50,
+                        max_mark:100,
+                        obtained_mark:80,
+                        first_mark:90,
+                        status:"Pass"
+                    }]
+                }]
+
+            },{
+                sem_no:5,
+                exam:[{
+                    name:"UNIT TEST 1",
+                    subjects:[{
+                        subject_code:"UCS1201",
+                        subject_name:"Data structures",
+                        min_mark:50,
+                        max_mark:100,
+                        obtained_mark:80,
+                        first_mark:90,
+                        status:"Pass"
+                    },
+                    {
+                        subject_code:"UCS1201",
+                        subject_name:"Data structures",
+                        min_mark:50,
+                        max_mark:100,
+                        obtained_mark:80,
+                        first_mark:90,
+                        status:"Pass"
+                    },
+                    {
+                        subject_code:"UCS1201",
+                        subject_name:"Data structures",
+                        min_mark:50,
+                        max_mark:100,
+                        obtained_mark:80,
+                        first_mark:90,
+                        status:"Pass"
+                    },
+                    {
+                        subject_code:"UCS1201",
+                        subject_name:"Data structures",
+                        min_mark:50,
+                        max_mark:100,
+                        obtained_mark:80,
+                        first_mark:90,
+                        status:"Pass"
+                    },
+                    {
+                        subject_code:"UCS1201",
+                        subject_name:"Data structures",
+                        min_mark:50,
+                        max_mark:100,
+                        obtained_mark:80,
+                        first_mark:90,
+                        status:"Pass"
+                    },
+                    {
+                        subject_code:"UCS1201",
+                        subject_name:"Data structures",
+                        min_mark:50,
+                        max_mark:100,
+                        obtained_mark:80,
+                        first_mark:90,
+                        status:"Pass"
+                    }]
+                },
+                {
+                    name:"MID SEMESTER",
+                    subjects:[{
+                        subject_code:"UCS1201",
+                        subject_name:"Data structures",
+                        min_mark:50,
+                        max_mark:100,
+                        obtained_mark:80,
+                        first_mark:90,
+                        status:"Pass"
+                    },
+                    {
+                        subject_code:"UCS1201",
+                        subject_name:"Data structures",
+                        min_mark:50,
+                        max_mark:100,
+                        obtained_mark:80,
+                        first_mark:90,
+                        status:"Pass"
+                    },
+                    {
+                        subject_code:"UCS1201",
+                        subject_name:"Data structures",
+                        min_mark:50,
+                        max_mark:100,
+                        obtained_mark:80,
+                        first_mark:90,
+                        status:"Pass"
+                    },
+                    {
+                        subject_code:"UCS1201",
+                        subject_name:"Data structures",
+                        min_mark:50,
+                        max_mark:100,
+                        obtained_mark:80,
+                        first_mark:90,
+                        status:"Pass"
+                    },
+                    {
+                        subject_code:"UCS1201",
+                        subject_name:"Data structures",
+                        min_mark:50,
+                        max_mark:100,
+                        obtained_mark:80,
+                        first_mark:90,
+                        status:"Pass"
+                    },
+                    {
+                        subject_code:"UCS1201",
+                        subject_name:"Data structures",
+                        min_mark:50,
+                        max_mark:100,
+                        obtained_mark:80,
+                        first_mark:90,
+                        status:"Pass"
+                    }]
+                },{
+                    name:"UNIT TEST 2",
+                    subjects:[{
+                        subject_code:"UCS1201",
+                        subject_name:"Data structures",
+                        min_mark:50,
+                        max_mark:100,
+                        obtained_mark:80,
+                        first_mark:90,
+                        status:"Pass"
+                    },
+                    {
+                        subject_code:"UCS1201",
+                        subject_name:"Data structures",
+                        min_mark:50,
+                        max_mark:100,
+                        obtained_mark:80,
+                        first_mark:90,
+                        status:"Pass"
+                    },
+                    {
+                        subject_code:"UCS1201",
+                        subject_name:"Data structures",
+                        min_mark:50,
+                        max_mark:100,
+                        obtained_mark:80,
+                        first_mark:90,
+                        status:"Pass"
+                    },
+                    {
+                        subject_code:"UCS1201",
+                        subject_name:"Data structures",
+                        min_mark:50,
+                        max_mark:100,
+                        obtained_mark:80,
+                        first_mark:90,
+                        status:"Pass"
+                    },
+                    {
+                        subject_code:"UCS1201",
+                        subject_name:"Data structures",
+                        min_mark:50,
+                        max_mark:100,
+                        obtained_mark:80,
+                        first_mark:90,
+                        status:"Pass"
+                    },
+                    {
+                        subject_code:"UCS1201",
+                        subject_name:"Data structures",
+                        min_mark:50,
+                        max_mark:100,
+                        obtained_mark:80,
+                        first_mark:90,
+                        status:"Pass"
+                    }]
+                },{
+                    name:"PREPARATORY EXAM",
+                    subjects:[{
+                        subject_code:"UCS1201",
+                        subject_name:"Data structures",
+                        min_mark:50,
+                        max_mark:100,
+                        obtained_mark:80,
+                        first_mark:90,
+                        status:"Pass"
+                    },
+                    {
+                        subject_code:"UCS1201",
+                        subject_name:"Data structures",
+                        min_mark:50,
+                        max_mark:100,
+                        obtained_mark:80,
+                        first_mark:90,
+                        status:"Pass"
+                    },
+                    {
+                        subject_code:"UCS1201",
+                        subject_name:"Data structures",
+                        min_mark:50,
+                        max_mark:100,
+                        obtained_mark:80,
+                        first_mark:90,
+                        status:"Pass"
+                    },
+                    {
+                        subject_code:"UCS1201",
+                        subject_name:"Data structures",
+                        min_mark:50,
+                        max_mark:100,
+                        obtained_mark:80,
+                        first_mark:90,
+                        status:"Pass"
+                    },
+                    {
+                        subject_code:"UCS1201",
+                        subject_name:"Data structures",
+                        min_mark:50,
+                        max_mark:100,
+                        obtained_mark:80,
+                        first_mark:90,
+                        status:"Pass"
+                    },
+                    {
+                        subject_code:"UCS1201",
+                        subject_name:"Data structures",
+                        min_mark:50,
+                        max_mark:100,
+                        obtained_mark:80,
+                        first_mark:90,
+                        status:"Pass"
+                    }]
+                }]
+
+            },{
+                sem_no:6,
+                exam:[{
+                    name:"UNIT TEST 1",
+                    subjects:[{
+                        subject_code:"UCS1201",
+                        subject_name:"Data structures",
+                        min_mark:50,
+                        max_mark:100,
+                        obtained_mark:80,
+                        first_mark:90,
+                        status:"Pass"
+                    },
+                    {
+                        subject_code:"UCS1201",
+                        subject_name:"Data structures",
+                        min_mark:50,
+                        max_mark:100,
+                        obtained_mark:80,
+                        first_mark:90,
+                        status:"Pass"
+                    },
+                    {
+                        subject_code:"UCS1201",
+                        subject_name:"Data structures",
+                        min_mark:50,
+                        max_mark:100,
+                        obtained_mark:80,
+                        first_mark:90,
+                        status:"Pass"
+                    },
+                    {
+                        subject_code:"UCS1201",
+                        subject_name:"Data structures",
+                        min_mark:50,
+                        max_mark:100,
+                        obtained_mark:80,
+                        first_mark:90,
+                        status:"Pass"
+                    },
+                    {
+                        subject_code:"UCS1201",
+                        subject_name:"Data structures",
+                        min_mark:50,
+                        max_mark:100,
+                        obtained_mark:80,
+                        first_mark:90,
+                        status:"Pass"
+                    },
+                    {
+                        subject_code:"UCS1201",
+                        subject_name:"Data structures",
+                        min_mark:50,
+                        max_mark:100,
+                        obtained_mark:80,
+                        first_mark:90,
+                        status:"Pass"
+                    }]
+                },
+                {
+                    name:"MID SEMESTER",
+                    subjects:[{
+                        subject_code:"UCS1201",
+                        subject_name:"Data structures",
+                        min_mark:50,
+                        max_mark:100,
+                        obtained_mark:80,
+                        first_mark:90,
+                        status:"Pass"
+                    },
+                    {
+                        subject_code:"UCS1201",
+                        subject_name:"Data structures",
+                        min_mark:50,
+                        max_mark:100,
+                        obtained_mark:80,
+                        first_mark:90,
+                        status:"Pass"
+                    },
+                    {
+                        subject_code:"UCS1201",
+                        subject_name:"Data structures",
+                        min_mark:50,
+                        max_mark:100,
+                        obtained_mark:80,
+                        first_mark:90,
+                        status:"Pass"
+                    },
+                    {
+                        subject_code:"UCS1201",
+                        subject_name:"Data structures",
+                        min_mark:50,
+                        max_mark:100,
+                        obtained_mark:80,
+                        first_mark:90,
+                        status:"Pass"
+                    },
+                    {
+                        subject_code:"UCS1201",
+                        subject_name:"Data structures",
+                        min_mark:50,
+                        max_mark:100,
+                        obtained_mark:80,
+                        first_mark:90,
+                        status:"Pass"
+                    },
+                    {
+                        subject_code:"UCS1201",
+                        subject_name:"Data structures",
+                        min_mark:50,
+                        max_mark:100,
+                        obtained_mark:80,
+                        first_mark:90,
+                        status:"Pass"
+                    }]
+                },{
+                    name:"UNIT TEST 2",
+                    subjects:[{
+                        subject_code:"UCS1201",
+                        subject_name:"Data structures",
+                        min_mark:50,
+                        max_mark:100,
+                        obtained_mark:80,
+                        first_mark:90,
+                        status:"Pass"
+                    },
+                    {
+                        subject_code:"UCS1201",
+                        subject_name:"Data structures",
+                        min_mark:50,
+                        max_mark:100,
+                        obtained_mark:80,
+                        first_mark:90,
+                        status:"Pass"
+                    },
+                    {
+                        subject_code:"UCS1201",
+                        subject_name:"Data structures",
+                        min_mark:50,
+                        max_mark:100,
+                        obtained_mark:80,
+                        first_mark:90,
+                        status:"Pass"
+                    },
+                    {
+                        subject_code:"UCS1201",
+                        subject_name:"Data structures",
+                        min_mark:50,
+                        max_mark:100,
+                        obtained_mark:80,
+                        first_mark:90,
+                        status:"Pass"
+                    },
+                    {
+                        subject_code:"UCS1201",
+                        subject_name:"Data structures",
+                        min_mark:50,
+                        max_mark:100,
+                        obtained_mark:80,
+                        first_mark:90,
+                        status:"Pass"
+                    },
+                    {
+                        subject_code:"UCS1201",
+                        subject_name:"Data structures",
+                        min_mark:50,
+                        max_mark:100,
+                        obtained_mark:80,
+                        first_mark:90,
+                        status:"Pass"
+                    }]
+                },{
+                    name:"PREPARATORY EXAM",
+                    subjects:[{
+                        subject_code:"UCS1201",
+                        subject_name:"Data structures",
+                        min_mark:50,
+                        max_mark:100,
+                        obtained_mark:80,
+                        first_mark:90,
+                        status:"Pass"
+                    },
+                    {
+                        subject_code:"UCS1201",
+                        subject_name:"Data structures",
+                        min_mark:50,
+                        max_mark:100,
+                        obtained_mark:80,
+                        first_mark:90,
+                        status:"Pass"
+                    },
+                    {
+                        subject_code:"UCS1201",
+                        subject_name:"Data structures",
+                        min_mark:50,
+                        max_mark:100,
+                        obtained_mark:80,
+                        first_mark:90,
+                        status:"Pass"
+                    },
+                    {
+                        subject_code:"UCS1201",
+                        subject_name:"Data structures",
+                        min_mark:50,
+                        max_mark:100,
+                        obtained_mark:80,
+                        first_mark:90,
+                        status:"Pass"
+                    },
+                    {
+                        subject_code:"UCS1201",
+                        subject_name:"Data structures",
+                        min_mark:50,
+                        max_mark:100,
+                        obtained_mark:80,
+                        first_mark:90,
+                        status:"Pass"
+                    },
+                    {
+                        subject_code:"UCS1201",
+                        subject_name:"Data structures",
+                        min_mark:50,
+                        max_mark:100,
+                        obtained_mark:80,
+                        first_mark:90,
+                        status:"Pass"
+                    }]
+                }]
+
+            }]
 
         }
     };
 }
 module.exports= markDetailView;
-},{}],26:[function(require,module,exports){
+},{}],25:[function(require,module,exports){
 function profileView(){
     return {
         restrict : 'E',
@@ -74735,59 +76898,45 @@ function profileView(){
                 name:"BHUVANESWARAN B",
                 batch:"2015-2019",
                 department:"CSE",
-                rollNo:"15BCS2015",
-                dateOfBirth:"08/05/1998",
+                roll_no:"15BCS2015",
+                date_of_birth:"08/05/1998",
                 gender:"Male",
-                fatherName:"BASKARAN C",
-                motherName:"CHANDRA",
+                father_name:"BASKARAN C",
+                mother_name:"CHANDRA",
                 income:40000.00,
                 religion:"Hindu",
                 community:"Backward Community",
                 caste:"YADAVA",
                 nationality:"INDIAN",
-                motherTongue:"TAMIL",
-                placeOfBirth:"MADURAI",
-                financialCategory:"self",
-                admissionType:"Regular",
-                admissionCategory:"Government Quota",
-                primaryAddress:{
-                    addressLine1:"B,93 Housing Board",
-                    addressLine2:"West ayakudi",
-                    addressLine3:"Palani-624613"
-                },
-                secondaryAddress:{
-                    addressLine1:"B,93 Housing Board",
-                    addressLine2:"West ayakudi",
-                    addressLine3:"Palani-624613"
-                },
-                medicalInformation:{
-                    height:170,
-                    weight:58.00,
-                    bloodGroup:"O+",
-                    physicallyChallenged:"YES",
-                    eyeColour:"Brown",
-                    eyeSight:"Normal",
-                    identification:{
-                        mole:"On left hand wrist",
-                        scar:"On left leg ankle"
-                    }
-                },
-                educationalInformations:[{
+                mother_tongue:"TAMIL",
+                place_of_birth:"MADURAI",
+                financial_category:"self",
+                admission_type:"Regular",
+                admission_category:"Government Quota",
+                primary_address:"B,93 Housing Board,West ayakudi,Palani-624613",
+                secondary_address:"B,93 Housing Board,West ayakudi,Palani-624613",
+                height:170,
+                weight:58.00,
+                blood_group:"O+",
+                physically_challenged:"YES",
+                eye_colour:"Brown",
+                eye_sight:"Normal",
+                mole:"On left hand wrist",
+                scar:"On left leg ankle",
+                educational_informations:[{
                     course:"10th",
                     institute:"Swamy Matriculation Higher Secondary School",
                     place:"Palani",
                     percentage:94.00,
-                    yearOfPassedOut:2013,
+                    year_of_passedout:2013,
                 },{
                     course:"12th",
                     institute:"Swamy Matriculation Higher Secondary School",
                     place:"Palani",
                     percentage:93.00,
-                    yearOfPassedOut:2015,
-                },],
-
-
-
+                    year_of_passedout:2015,
+                }
+                ]
             }
 
         }
