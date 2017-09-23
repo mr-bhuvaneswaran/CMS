@@ -1,6 +1,21 @@
 'use strict';
 
-function mainPageCtrl($scope,$mdToast, $mdSidenav,$timeout,$mdPanel){
+function mainPageCtrl($scope, $mdToast, $mdSidenav, $timeout, $mdPanel, $http){
+    
+    $scope.attendance = []
+    $scope.results = []
+    $http.get("http://127.0.0.1:8000/api/student/1").success(function(response)
+      { 
+          $scope.student = response;
+          angular.forEach(response.academic, function(value){
+              $scope.results.push({value : value.exam_results.gpa, label : "Sem-" + value.semester})
+              angular.forEach(value.attendance, function(month){
+                  $scope.attendance.push({value : month.percentage, label : month.working_month.month.substr(0,3) + '-' +  month.working_month.year%100})
+              });
+          });
+          $scope.events = response.management.event
+          $scope.profile = response
+      });
 
     $scope.showDirective=[true,false,false,false,false,false,false,false,false,false,false,false]
     $scope.currentSelected = 0
@@ -13,7 +28,7 @@ function mainPageCtrl($scope,$mdToast, $mdSidenav,$timeout,$mdPanel){
     $scope.username="BHUVANESWARAN B"
     $scope.navshow=true
     $scope.links=['Dashboard','Profile',
-    'Acadamic Planner','Attendance',
+    'Academic Planner','Attendance',
     'Mark Detail','Fees Detail','Library Status',
     'Exam Results','Feedback','Events','Circular']
 

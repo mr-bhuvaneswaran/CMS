@@ -12,12 +12,12 @@
 <div layout="column" ng-repeat="fee in fees">
     <div layout="row">
     <div style="padding-top: 15px;" flex=5>{{$index+1}}.</div>
-    <div style="padding-top: 15px;padding-right: 25px;text-overflow: ellipsis;white-space: nowrap;overflow: hidden;" flex=20>{{fee.name}}</div>
-    <div style="padding-top: 15px;padding-right: 15px;text-overflow: ellipsis;white-space: nowrap;overflow: hidden;" flex=10>{{fee.apply_date}}</div>
-    <div style="padding-top: 15px;padding-right: 15px;text-overflow: ellipsis;white-space: nowrap;overflow: hidden;" flex=10>{{fee.due_date}}</div>
-    <div style="padding-top: 15px;padding-right: 45px;text-overflow: ellipsis;white-space: nowrap;overflow: hidden;" flex=20>{{fee.fee_amt}}</div>
-    <div style="padding-top: 15px;padding-right: 45px;text-overflow: ellipsis;white-space: nowrap;overflow: hidden;" flex=20>{{fee.paid_amt}}</div>
-    <div style="padding-top: 15px;padding-right: 25px;text-overflow: ellipsis;white-space: nowrap;overflow: hidden;" flex=15>{{fee.balance_amt}}</div>
+    <div style="padding-top: 15px;padding-right: 25px;text-overflow: ellipsis;white-space: nowrap;overflow: hidden;" flex=20>{{fee.fees_detail.name}}</div>
+    <div style="padding-top: 15px;padding-right: 15px;text-overflow: ellipsis;white-space: nowrap;overflow: hidden;" flex=10>{{fee.fees_detail.apply_date}}</div>
+    <div style="padding-top: 15px;padding-right: 15px;text-overflow: ellipsis;white-space: nowrap;overflow: hidden;" flex=10>{{fee.fees_detail.due_date}}</div>
+    <div style="padding-top: 15px;padding-right: 45px;text-overflow: ellipsis;white-space: nowrap;overflow: hidden;" flex=20>{{fee.fees_detail.fee_amt}}</div>
+    <div style="padding-top: 15px;padding-right: 45px;text-overflow: ellipsis;white-space: nowrap;overflow: hidden;" flex=20>{{fee.paid_fees_amt}}</div>
+    <div style="padding-top: 15px;padding-right: 25px;text-overflow: ellipsis;white-space: nowrap;overflow: hidden;" flex=15>{{fee.balance_fees_amt}}</div>
     </div>
     <md-divider ng-if="!$last"></md-divider>    
     </div>

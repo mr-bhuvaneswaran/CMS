@@ -1,5 +1,5 @@
 <md-tabs style="font-size: 12px;" class="result" md-dynamic-height md-border-bottom>
-      <md-tab label="Sem-{{$index+1}}" md-primary ng-repeat="sem in examResults">
+      <md-tab label="Sem-{{$index+1}}" md-primary ng-repeat="semester in semesters">
         <md-card layout="column" style="background: rgb(238, 238, 238);border-top: solid 3px rgba(0, 0, 0, 0.48);" class="md-padding">   
         <md-content class="md-padding">
           <md-divider></md-divider>
@@ -14,13 +14,13 @@
             <div flex=10><b>Status</b></div>
          </div>
           <div layout="column">
-            <div layout="row" ng-class="{'fail':subject.status == 'Fail','pass':subject.status == 'Pass'}" ng-repeat="subject in sem.subjects">
+            <div layout="row" ng-class="{'fail':subject.status == 'Fail','pass':subject.status == 'Pass'}" ng-repeat="subject in semester.exam_results.semester_subject">
             <div style="padding-top: 5px;padding-bottom: 5px;padding-left:5px;" flex=5>{{$index+1}}.</div>
             <div style="padding-top: 5px;padding-bottom: 5px;padding-right: 25px;text-overflow: ellipsis;white-space: nowrap;overflow: hidden;" flex=10>{{subject.sem_no}}</div>
             <div style="padding-top: 5px;padding-bottom: 5px;padding-right: 25px;text-overflow: ellipsis;white-space: nowrap;overflow: hidden;" flex=10>{{subject.subject_code}}</div>    
             <div style="padding-top: 5px;padding-bottom: 5px;padding-right: 15px;text-overflow: ellipsis;white-space: nowrap;overflow: hidden;" flex=35>{{subject.subject_name}}</div>
             <div style="padding-top: 5px;padding-bottom: 5px;padding-right: 15px;text-overflow: ellipsis;white-space: nowrap;overflow: hidden;" flex=10>{{subject.grade}}</div>
-            <div style="padding-top: 5px;padding-bottom: 5px;padding-right: 45px;text-overflow: ellipsis;white-space: nowrap;overflow: hidden;" flex=10>{{subject.grade.point}}</div>
+            <div style="padding-top: 5px;padding-bottom: 5px;padding-right: 45px;text-overflow: ellipsis;white-space: nowrap;overflow: hidden;" flex=10>{{subject.grade_point}}</div>
             <div style="padding-top: 5px;padding-bottom: 5px;padding-right: 45px;text-overflow: ellipsis;white-space: nowrap;overflow: hidden;" flex=10>{{subject.credit_point}}</div>
             <div style="padding-top: 5px;padding-bottom: 5px;padding-right: 25px;text-overflow: ellipsis;white-space: nowrap;overflow: hidden;" flex=10>{{subject.status}}</div>
           </div>

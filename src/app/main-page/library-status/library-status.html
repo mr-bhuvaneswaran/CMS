@@ -10,16 +10,16 @@
     <div flex=15><b>Status</b></div>
 </div>
 <br>
-<div layout="column" ng-repeat="libary in libraryDetails">
+<div layout="column" ng-repeat="book in books">
     <div layout="row">
     <div style="padding-top: 15px;" flex=5>{{$index+1}}.</div>
-    <div style="padding-top: 15px;padding-right: 45px;text-overflow: ellipsis;white-space: nowrap;overflow: hidden;padding-bottom: 5px;" title="{{libary.bookName}}" flex=20>{{libary.bookName}}</div>
-    <div style="padding-top: 15px;padding-right: 45px;padding-bottom: 5px;" flex=10>{{libary.bookId}}</div>
-    <div style="padding-top: 15px;padding-right: 30px;padding-bottom: 5px;" flex=15>{{libary.issuedDate}}</div>
-    <div style="padding-top: 15px;padding-right: 30px;padding-bottom: 5px;" flex=15>{{libary.renewalDate}}</div>
-    <div style="padding-top: 15px;padding-right: 30px;padding-bottom: 5px;" flex=15>{{libary.returnDate}}</div>
-    <div style="padding-top: 15px;padding-right: 30px;padding-bottom: 5px;" flex=10>{{libary.fineAmt}}</div>
-    <div style="padding-top: 15px;padding-right: 30px;padding-bottom: 5px;" flex=15>{{libary.status}}</div>
+    <div style="padding-top: 15px;padding-right: 45px;text-overflow: ellipsis;white-space: nowrap;overflow: hidden;padding-bottom: 5px;" title="{{book.book_name}}" flex=20>{{libary.book_name}}</div>
+    <div style="padding-top: 15px;padding-right: 45px;padding-bottom: 5px;" flex=10>{{book.book_id}}</div>
+    <div style="padding-top: 15px;padding-right: 30px;padding-bottom: 5px;" flex=15>{{book.issued_date}}</div>
+    <div style="padding-top: 15px;padding-right: 30px;padding-bottom: 5px;" flex=15>{{book.renewal_date}}</div>
+    <div style="padding-top: 15px;padding-right: 30px;padding-bottom: 5px;" flex=15>{{book.return_date}}</div>
+    <div style="padding-top: 15px;padding-right: 30px;padding-bottom: 5px;" flex=10>{{book.fine_amt}}</div>
+    <div style="padding-top: 15px;padding-right: 30px;padding-bottom: 5px;" flex=15>{{book.status}}</div>
     </div>
     <md-divider ng-if="!$last"></md-divider>    
     </div>

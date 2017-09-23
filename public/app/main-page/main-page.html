@@ -17,7 +17,7 @@
       </md-toolbar>
       <div layout-padding style="background: rgba(224, 224, 224, 0.7);">
          <img src="/assets/images/bhuvanes.jpg" style="border-radius:50%;height: 48px;width: 48px;" alt="image">
-        <div><strong style="font-size: smaller;">Hello,{{username}}</strong></div>  
+        <div><strong style="font-size: smaller;">Hello,{{student.name}}</strong></div>  
       </div>
         
       <md-content class="auto-scroll" layout-padding style="background: rgba(224, 224, 224, 0.7);padding:0px;height: 100%;">
@@ -52,17 +52,17 @@
           </md-card>     
       </div>
       <div flex>
-        <acadamic-planner-view ng-if="showDirective[2]" style="overflow:auto"></acadamic-planner-view>
-        <attendance-view ng-if="showDirective[3]" style="overflow:auto"></attendance-view>
-        <circular-view ng-if="showDirective[10]" style="overflow:auto"></circular-view>
-        <dashboard-view ng-if="showDirective[0]" style="overflow:auto"></dashboard-view>
-        <events-view ng-if="showDirective[9]" style="overflow:auto"></events-view>
-        <exam-results-view ng-if="showDirective[7]" style="overflow:auto"></exam-results-view>
+        <academic-planner-view planner = "student.management.planner[0]" ng-if="showDirective[2]" style="overflow:auto"></academic-planner-view>
+        <attendance-view attendance = "attendance" ng-if="showDirective[3]" style="overflow:auto"></attendance-view>
+        <circular-view circulars = "student.management.circular" ng-if="showDirective[10]" style="overflow:auto"></circular-view>
+        <dashboard-view results = "results" attendance = "attendance" ng-if="showDirective[0]" style="overflow:auto"></dashboard-view>
+        <events-view events = "events" ng-if="showDirective[9]" style="overflow:auto"></events-view>
+        <exam-results-view semesters ="student.academic" ng-if="showDirective[7]" style="overflow:auto"></exam-results-view>
         <feedback-view ng-if="showDirective[8]" style="overflow:auto"></feedback-view>
-        <fees-details-view  ng-if="showDirective[5]" style="overflow:auto"></fees-details-view>
-        <library-status-view ng-if="showDirective[6]" style="overflow:auto"></library-status-view>
-        <mark-detail-view ng-if="showDirective[4]" style="overflow:auto"></mark-detail-view>
-        <profile-view ng-if="showDirective[1]" style="overflow:auto"></profile-view>
+        <fees-details-view fees = "student.fees_information" ng-if="showDirective[5]" style="overflow:auto"></fees-details-view>
+        <library-status-view books = "student.library_status" ng-if="showDirective[6]" style="overflow:auto"></library-status-view>
+        <mark-detail-view semesters ="student.academic" ng-if="showDirective[4]" style="overflow:auto"></mark-detail-view>
+        <profile-view profile = 'profile' ng-if="showDirective[1]" style="overflow:auto"></profile-view>
       </div>
     </div>
     </div>

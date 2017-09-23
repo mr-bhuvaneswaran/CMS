@@ -1,7 +1,11 @@
+"use strict";
 function attendanceView(){
     return {
         restrict:'E',
         templateUrl:'app/main-page/attendance/attendance.html',
+        scope :{
+            attendance : '=',
+        },
         controller:function($scope){
           $scope.options = {
             chart: {
@@ -32,32 +36,7 @@ function attendanceView(){
 
         $scope.data = [
             {
-                values: [
-                    {
-                        "label" : "June" ,
-                        "value" : 70
-                    } ,
-                    {
-                        "label" : "July" ,
-                        "value" : 60
-                    } ,
-                    {
-                        "label" : "August" ,
-                        "value" : 79
-                    } ,
-                    {
-                        "label" : "September" ,
-                        "value" : 81
-                    } ,
-                    {
-                        "label" : "October" ,
-                        "value" : 90
-                    } ,
-                    {
-                        "label" : "November" ,
-                        "value" : 88
-                    }
-                ]
+                values: $scope.attendance
             }
         ]
 }

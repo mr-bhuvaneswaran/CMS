@@ -1,6 +1,6 @@
 "use strict";
 require('angular-material');
-var acadamicPlannerView = require('./acadamic-planner/acadamic-planner.js'); 
+var academicPlannerView = require('./academic-planner/academic-planner.js'); 
 var attendanceView = require('./attendance/attendance.js');
 var circularView = require('./circular/circular.js');
 var dashboardView = require('./dashboard/dashboard.js');
@@ -15,7 +15,7 @@ var profileView = require('./profile/profile.js');
 var mainPageCtrl = require('./main-page-controller.js');
 var mainPageModule = angular.module('myApp.mainPage',['ngRoute','ngMaterial','nvd3']);
 mainPageModule.controller('mainPageCtrl',mainPageCtrl);
-mainPageModule.directive('acadamicPlannerView',acadamicPlannerView);
+mainPageModule.directive('academicPlannerView',academicPlannerView);
 mainPageModule.directive('attendanceView',attendanceView);
 mainPageModule.directive('circularView',circularView);
 mainPageModule.directive('dashboardView',dashboardView);

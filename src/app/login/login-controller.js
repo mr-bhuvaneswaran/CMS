@@ -1,6 +1,6 @@
 'use strict';
 
-function loginCtrl($scope,$mdToast,$location){
+function loginCtrl($scope, $mdToast, $location){
     $scope.remember_login = false;
     $scope.username="";
     $scope.password="";

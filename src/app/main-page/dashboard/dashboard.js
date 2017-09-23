@@ -1,7 +1,12 @@
+"use strict";
 function dashboardView(){
     return {
         restrict:'E',
         templateUrl:'app/main-page/dashboard/dashboard.html',
+        scope :{
+            attendance : '=',
+            results : '='
+        },
         controller:function($scope){
 $scope.gpaOptions = {
             chart: {
@@ -35,25 +40,7 @@ $scope.gpaOptions = {
 
         $scope.gpaData = [
             {
-                values: [
-                    {
-                        "label" : "Sem 1" ,
-                        "value" : 9.04
-                    } ,
-                    {
-                        "label" : "Sem 2" ,
-                        "value" : 8.8
-                    } ,
-                    {
-                        "label" : "Sem 3" ,
-                        "value" : 8.7
-                    } ,
-                    {
-                        "label" : "Sem 4" ,
-                        "value" : 8.6
-                    }
-                ]
-            }
+                values: $scope.results            }
         ];     
      }
     };

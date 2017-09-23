@@ -1,7 +1,7 @@
 <md-tabs style="font-size: 12px;" class="mark" md-dynamic-height md-border-bottom>
-      <md-tab label="Sem-{{$index+1}}" md-primary ng-repeat="sem in markDetails">
+      <md-tab label="Sem-{{$index+1}}" md-primary ng-repeat="semester in semesters">
         <md-card layout="column" style="background: rgb(238, 238, 238);border-top: solid 3px rgba(0, 0, 0, 0.48);" class="md-padding">   
-        <md-content class="md-padding"  ng-repeat="exam in sem.exam">
+        <md-content class="md-padding"  ng-repeat="exam in semester.internal_mark_detail.internal_exam">
           <h4>{{exam.name}}</h4>
           <md-divider></md-divider>
           <div layout="row" style="padding-top:10px">
@@ -15,7 +15,7 @@
             <div flex=10><b>Status</b></div>
          </div>
           <div layout="column">
-            <div layout="row" ng-class="{'fail':{{subject.obtained_mark}} < {{subject.min_mark}},'pass':{{subject.obtained_mark}} >= {{subject.min_mark}}}" class="subject" ng-repeat="subject in exam.subjects">
+            <div layout="row" ng-class="{'fail':{{subject.obtained_mark}} < {{subject.min_mark}},'pass':{{subject.obtained_mark}} >= {{subject.min_mark}}}" class="subject" ng-repeat="subject in exam.internal_exam_subject">
             <div style="padding-top: 5px;padding-bottom: 5px;padding-left:5px;" flex=5>{{$index+1}}.</div>
             <div style="padding-top: 5px;padding-bottom: 5px;padding-right: 25px;text-overflow: ellipsis;white-space: nowrap;overflow: hidden;" flex=10>{{subject.subject_code}}</div>
             <div style="padding-top: 5px;padding-bottom: 5px;padding-right: 15px;text-overflow: ellipsis;white-space: nowrap;overflow: hidden;" flex=35>{{subject.subject_name}}</div>
